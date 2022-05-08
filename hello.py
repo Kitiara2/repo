@@ -42,9 +42,9 @@ with st.echo(code_location='below'):
     df_selection = df.groupby(["Country_of_Origin", "harvest_year", "Species"]).sum().reset_index()
     
     url = (
-        "https://github.com/Kitiara2/repo/raw/main"
+        "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
     )
-    state_geo = f"{url}/countries-land.geo.json"
+    state_geo = f"{url}/us-states.json"
     countries =("https://github.com/Kitiara2/repo/raw/main/country.csv")
     df_countries = pd.read_csv(countries)
     df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
@@ -58,7 +58,7 @@ with st.echo(code_location='below'):
         name="choropleth",
         data=df_countries,
         columns=["id", "Clean_Cup"],
-        key_on="feature.geometry.properties.A3",
+        key_on="feature.id"",
         fill_color="YlGn",
         fill_opacity=0.7,
         line_opacity=0.2,
