@@ -41,7 +41,7 @@ with st.echo(code_location='below'):
     st.write(df)
     
     url = (
-        "https://github.com/Kitiara2/repo/raw/main/"
+        "https://github.com/Kitiara2/repo/raw/main"
     )
     state_geo = f"{url}/countries-land.geo.json"
     state_unemployment = f"{url}/country.csv"
