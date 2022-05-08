@@ -36,7 +36,7 @@ with st.echo(code_location='below'):
 
     df = pd.concat([df_ar, df_ro], ignore_index=False)
 #    df = df_ro
-#    df
+    df
     
     df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
     df.rename(columns={'Clean.Cup': 'Clean_Cup'}, inplace=True)
