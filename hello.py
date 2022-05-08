@@ -37,6 +37,8 @@ with st.echo(code_location='below'):
     df = pd.concat([df_ar, df_ro], ignore_index=False)
 #    df = df_ro
     st.write(df)
+    df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
+    df_selection = df.groupby(["Country_of_Origin", "harvest_year", "Species"]).sum().reset_index()
     
     url = (
         "https://github.com/Kitiara2/repo/raw/main"
@@ -44,7 +46,7 @@ with st.echo(code_location='below'):
     state_geo = f"{url}/countries-land.geo.json"
     countries =("https://github.com/Kitiara2/repo/raw/main/country.csv")
     df_countries = pd.read_csv(countries)
-    df_lands = pd.merge(df_countries, df, left_on = 'value', right_on = 'Country.of.Origin')
+    df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
     df_lands
 #    state_data = pd.read_csv(state_unemployment)
 
@@ -53,8 +55,8 @@ with st.echo(code_location='below'):
     folium.Choropleth(
         geo_data=state_geo,
         name="choropleth",
-        data=state_data,
-        columns=["State", "Unemployment"],
+        data=df_countries,
+        columns=["Country.of.Origin", "Unemployment"],
         key_on="feature.id",
         fill_color="YlGn",
         fill_opacity=0.7,
