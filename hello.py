@@ -48,35 +48,19 @@ with st.echo(code_location='below'):
     countries =("https://github.com/Kitiara2/repo/raw/main/country.csv")
     df_countries = pd.read_csv(countries)
     df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
-    df_lands
-#    state_data = pd.read_csv(state_unemployment)
+    
+    country = st.selectbox(
+        "Species", df["Species"].value_counts().iloc[:10].index
+    )
 
-#    state_unemployment = f"{url}/US_Unemployment_Oct2012.csv"
-#    state_data = pd.read_csv(state_unemployment)
-
-#    m = folium.Map(location=[0,0], zoom_start=1.5)
-
-#    folium.Choropleth(
-#        geo_data=state_geo,
-#        name="choropleth",
-#        data=state_data,
-#        columns=["State", "Unemployment"],
-#        key_on="feature.id",
-#        fill_color="YlGn",
-#        fill_opacity=0.7,
-#        line_opacity=0.2,
-#        legend_name="Unemployment Rate (%)",
-#    ).add_to(m)
-
-#    folium.LayerControl().add_to(m)
-#    st_data = st_folium(m, width = 725)
-#    st_data
+    df_lands_selection = df_lands[lambda x: x["Species"] == species]
+    df_lands_selection
 
     m = folium.Map(location=[48, -102], zoom_start=3)
     folium.Choropleth(
         geo_data=state_geo,
         name="choropleth",
-        data=df_lands,
+        data=df_lands_selection,
         columns=["id", "Clean_Cup"],
         key_on="feature.id",
         fill_color="YlGn",
@@ -95,7 +79,6 @@ with st.echo(code_location='below'):
     )
 
     df_selection = df[lambda x: x["Country_of_Origin"] == country]
-    df_selection = df
     df_selection
 
     chart = (
@@ -118,7 +101,7 @@ with st.echo(code_location='below'):
 
 
     df_selection = df[lambda x: x["Region"] == region]
-    df_selection = df.groupby(["Country_of_Origin", "harvest_year", "Species"]).sum().reset_index()
+    df_selection = df_selection.groupby(["Country_of_Origin", "harvest_year", "Species"]).sum().reset_index()
     df_selection
 
     chart = (
@@ -141,7 +124,7 @@ with st.echo(code_location='below'):
 
 
     df_selection = df[lambda x: x["Species"] == species]
-    df_selection = df.drop("harvest_year", 1).groupby("Country_of_Origin").sum().reset_index()
+    df_selection = df_selection.drop("harvest_year", 1).groupby("Country_of_Origin").sum().reset_index()
     df_selection
 
     base = (
