@@ -40,7 +40,7 @@ with st.echo(code_location='below'):
     
 
     # initialize the map and store it in a m object
-    m = folium.Map(location=center, zoom_start=1)
+    m = folium.Map()
     # show the map
     st_data = st_folium(m, width = 725)
     st_data
