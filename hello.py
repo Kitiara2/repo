@@ -75,7 +75,7 @@ with st.echo(code_location='below'):
     m = folium.Map(location=[40, -95], zoom_start=4)
 
     # show the map
-    m
+    st.write(m)
 #    url = "https://github.com/Kitiara2/repo/raw/main/france.geojson"
 #    gdf = gpd.read_file(url)
     
