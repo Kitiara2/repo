@@ -40,7 +40,7 @@ with st.echo(code_location='below'):
     
     # initialize the map and store it in a m object
     m = folium.Map()
-    m.choropleth(geo_path='switzerland.geojson')
+#    m.choropleth(geo_path='switzerland.geojson')
     # show the map
     st_data = st_folium(m, width = 725)
     st_data
