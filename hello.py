@@ -35,34 +35,32 @@ with st.echo(code_location='below'):
     df_ar = get_data("https://github.com/Kitiara2/repo/raw/main/arabica_data_cleaned.csv")
 
     df = pd.concat([df_ar, df_ro], ignore_index=False)
-#    df = df_ro
-    df
     
     df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
     df.rename(columns={'Clean.Cup': 'Clean_Cup'}, inplace=True)
     df_selection = df.groupby(["Country_of_Origin", "harvest_year"]).agg({'Clean_Cup':'sum', 'Aroma' : 'mean', 'Flavor' : 'mean', 'Aftertaste' : 'mean', 'Acidity' : 'mean', 'Body' : 'mean', 'Balance' : 'mean', 'Species' : 'unique'}).reset_index()
     
     url = (
-        "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
+        "https://github.com/Kitiara2/repo/raw/main"
     )
-    state_geo = f"{url}/us-states.json"
+    state_geo = f"{url}/world.json"
     countries =("https://github.com/Kitiara2/repo/raw/main/country.csv")
     df_countries = pd.read_csv(countries)
     df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
     df_lands
     
-    species = st.selectbox(
-        "Species", df_lands["Species"].value_counts().iloc[:10].index
-    )
+#    species = st.selectbox(
+#        "Species", df_lands["Species"].value_counts().iloc[:10].index
+ #   )
 
-    df_lands_selection = df_lands[lambda x: x["Species"] == species]
-    df_lands_selection
+#    df_lands_selection = df_lands[lambda x: x["Species"] == species]
+#    df_lands_selection
 
     m = folium.Map(location=[48, -102], zoom_start=3)
     folium.Choropleth(
         geo_data=state_geo,
         name="choropleth",
-        data=df_lands_selection,
+        data=df_lands,
         columns=["id", "Clean_Cup"],
         key_on="feature.id",
         fill_color="YlGn",
