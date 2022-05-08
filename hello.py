@@ -46,10 +46,29 @@ with st.echo(code_location='below'):
     )
     state_geo = f"{url}/us-states.json"
     countries =("https://github.com/Kitiara2/repo/raw/main/country.csv")
-    df_countries = pd.read_csv(countries)
-    df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
-    df_lands
+#    df_countries = pd.read_csv(countries)
+#    df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
+#    df_lands
 #    state_data = pd.read_csv(state_unemployment)
+
+    state_unemployment = f"{url}/US_Unemployment_Oct2012.csv"
+    state_data = pd.read_csv(state_unemployment)
+
+    m = folium.Map(location=[0,0], zoom_start=1.5)
+
+    folium.Choropleth(
+           geo_data="datasets/custom.geo.json",
+        name='choropleth',
+        data=happiness_report,
+        columns=['Country or region', 'Score'],
+        key_on='feature.properties.sovereignt',
+        fill_color='BrBG',
+        fill_opacity=0.9,
+        line_opacity=0.2,
+        legend_name='Happiness Score'
+    ).add_to(m)
+
+folium.LayerControl().add_to(m)
 
     m = folium.Map(location=[48, -102], zoom_start=3)
 
