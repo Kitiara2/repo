@@ -68,7 +68,7 @@ with st.echo(code_location='below'):
         legend_name='Happiness Score'
     ).add_to(m)
 
-folium.LayerControl().add_to(m)
+    folium.LayerControl().add_to(m)
 
     m = folium.Map(location=[48, -102], zoom_start=3)
 
