@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_folium import st_folium
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -10,44 +11,14 @@ import plotly
 import plotly.graph_objs as go
 import json
 import folium
-import webbrowser
+#import webbrowser
 
 with st.echo(code_location='below'):
-    """
-    ## Hello, World!
-    """
 
-
-    def print_hello(name="World"):
-        st.write(f"### Hello, {name}!")
-
-
-    name = st.text_input("Your name", key="name", value="Anonymous")
-    print_hello(name)
-
-    """
-    ## Добавим графики
-    Чтобы заработали библиотеки seaborn и altair, нужно добавить в проект файл 
-    `requirements.txt` с такими строчками:
-    
-        seaborn
-        altair
-    """
-
-
-    a = st.slider("a")
-    x = np.linspace(-6, 6, 500)
-    df = pd.DataFrame(dict(x=x, y=np.sin(a * x)))
-    fig, ax = plt.subplots()
-    sns.lineplot(data=df, x="x", y="y", ax=ax)
-    st.pyplot(fig)
-
-    """
-    ## Немного анализа данных
-    """
 
 
     @st.cache
+'''
     def get_data(data_url):
 #        data_url = "file://localhost/C:/Users/kitiara/Desktop/streamlit-example2022-master/arabica_data_cleaned.csv"
             
@@ -71,32 +42,14 @@ with st.echo(code_location='below'):
 #    df = df_ro
     st.write(df)
     
-
+'''
     # initialize the map and store it in a m object
-    #m = folium.Map(location=[40, -95], zoom_start=4)
-
-
-    class Map:
-        def __init__(self, center, zoom_start):
-            self.center = center
-            self.zoom_start = zoom_start
-    
-        def showMap(self):
-            #Create the map
-            my_map = folium.Map(location = self.center, zoom_start = self.zoom_start)
-
-            #Display the map
-            my_map.save("map.html")
-            webbrowser.open("map.html")
-
-
-    #Define coordinates of where we want to center our map
-    coords = [51.5074, 0.1278]
-    map = Map(center = coords, zoom_start = 13)
-    map.showMap()
-
+    m = folium.Map(location=[40, -95], zoom_start=4)
     # show the map
+    st_data = st_folium(m, width = 725)
+    st_data
     #st.write(m)
+'''
 #    url = "https://github.com/Kitiara2/repo/raw/main/france.geojson"
 #    gdf = gpd.read_file(url)
     
@@ -177,7 +130,7 @@ with st.echo(code_location='below'):
     c2 = base.mark_text(radiusOffset=10).encode(text="Clean_Cup:Q")
 
     c1 + c2
-
+'''
 
 
     
