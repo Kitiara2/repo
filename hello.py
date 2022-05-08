@@ -38,10 +38,18 @@ with st.echo(code_location='below'):
 #    df = df_ro
     st.write(df)
     
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=[x[0]], y=[f(x)[0]], mode='lines+markers',  name='f(x)=x<sup>2</sup>'))
+
+    fig.update_layout(legend_orientation="h",
+                  legend=dict(x=.5, xanchor="center"),
+                  margin=dict(l=0, r=0, t=0, b=0))
+    fig.update_traces(hoverinfo="all", hovertemplate="Аргумент: %{x}<br>Функция: %{y}")
+    fig.show()
 
     # initialize the map and store it in a m object
     m = folium.Map()
-    kanton_m.choropleth(geo_path='switzerland.geojson')
+    m.choropleth(geo_path='switzerland.geojson')
     # show the map
     st_data = st_folium(m, width = 725)
     st_data
