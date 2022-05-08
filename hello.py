@@ -69,7 +69,7 @@ with st.echo(code_location='below'):
 #    df = df_ro
     st.write(df)
     
-    url = 'https://github.com/Kitiara2/repo/raw/main/World_Countries.shp'
+    url = "https://github.com/Kitiara2/repo/raw/main/World_Countries.shp"
     gdf = gpd.read_file(url)
     
     fig = go.Figure(go.Choroplethmapbox(locations=gdf['st_nm'], z=gdf['state_code'],featureidkey="properties.st_nm",colorscale="Viridis", zmin=0, zmax=25,marker_opacity=0.5, marker_line_width=1))
