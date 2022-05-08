@@ -9,6 +9,7 @@ from plotly.graph_objs import Scatter, Figure, Layout
 import plotly
 import plotly.graph_objs as go
 import json
+import folium
 
 with st.echo(code_location='below'):
     """
@@ -69,14 +70,20 @@ with st.echo(code_location='below'):
 #    df = df_ro
     st.write(df)
     
-    url = "https://github.com/Kitiara2/repo/raw/main/france.geojson"
-    gdf = gpd.read_file(url)
+
+    # initialize the map and store it in a m object
+    m = folium.Map(location=[40, -95], zoom_start=4)
+
+    # show the map
+    m
+#    url = "https://github.com/Kitiara2/repo/raw/main/france.geojson"
+#    gdf = gpd.read_file(url)
     
-    fig = go.Figure(go.Choroplethmapbox(locations=gdf['st_nm'], z=gdf['state_code'],featureidkey="properties.st_nm",colorscale="Viridis", zmin=0, zmax=25,marker_opacity=0.5, marker_line_width=1))
-    fig.update_layout(mapbox_style="carto-positron",
-                  mapbox_zoom=3.5,mapbox_center = {"lat":23.537876 , "lon": 78.292142} ) 
-    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-    fig.show()
+#    fig = go.Figure(go.Choroplethmapbox(locations=gdf['st_nm'], z=gdf['state_code'],featureidkey="properties.st_nm",colorscale="Viridis", zmin=0, zmax=25,marker_opacity=0.5, marker_line_width=1))
+#    fig.update_layout(mapbox_style="carto-positron",
+#                  mapbox_zoom=3.5,mapbox_center = {"lat":23.537876 , "lon": 78.292142} ) 
+#    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+#    fig.show()
 
     df.rename(columns={'Clean.Cup': 'Clean_Cup'}, inplace=True)
     df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
