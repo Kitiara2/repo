@@ -18,7 +18,7 @@ with st.echo(code_location='below'):
 
 
     @st.cache
-'''
+
     def get_data(data_url):
 #        data_url = "file://localhost/C:/Users/kitiara/Desktop/streamlit-example2022-master/arabica_data_cleaned.csv"
             
@@ -42,14 +42,14 @@ with st.echo(code_location='below'):
 #    df = df_ro
     st.write(df)
     
-'''
+
     # initialize the map and store it in a m object
     m = folium.Map(location=[40, -95], zoom_start=4)
     # show the map
     st_data = st_folium(m, width = 725)
     st_data
     #st.write(m)
-'''
+
 #    url = "https://github.com/Kitiara2/repo/raw/main/france.geojson"
 #    gdf = gpd.read_file(url)
     
@@ -130,7 +130,6 @@ with st.echo(code_location='below'):
     c2 = base.mark_text(radiusOffset=10).encode(text="Clean_Cup:Q")
 
     c1 + c2
-'''
 
 
     
