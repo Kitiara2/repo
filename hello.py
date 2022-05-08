@@ -56,7 +56,7 @@ with st.echo(code_location='below'):
         ).drop("Harvest.Year", 1)
 
 
-    df_ar = get_data("https://github.com/Kitiara2/repo/blob/main/arabica_data_cleaned.csv")
+    df_ar = get_data("https://github.com/Kitiara2/repo/blob/main/arabica_data_lite.csv")
     df_ro = get_data("https://github.com/Kitiara2/repo/blob/main//robusta_data_cleaned.csv")
     df_ro.rename(columns={'Country_of_Origin': 'Country.of.Origin', 'Clean_Cup': 'Clean.Cup'}, inplace=True)
 
