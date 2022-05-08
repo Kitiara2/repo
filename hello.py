@@ -57,15 +57,15 @@ with st.echo(code_location='below'):
     m = folium.Map(location=[0,0], zoom_start=1.5)
 
     folium.Choropleth(
-           geo_data="datasets/custom.geo.json",
-        name='choropleth',
-        data=happiness_report,
-        columns=['Country or region', 'Score'],
-        key_on='feature.properties.sovereignt',
-        fill_color='BrBG',
-        fill_opacity=0.9,
+        geo_data=state_geo,
+        name="choropleth",
+        data=state_data,
+        columns=["State", "Unemployment"],
+        key_on="feature.id",
+        fill_color="YlGn",
+        fill_opacity=0.7,
         line_opacity=0.2,
-        legend_name='Happiness Score'
+        legend_name="Unemployment Rate (%)",'
     ).add_to(m)
 
     folium.LayerControl().add_to(m)
