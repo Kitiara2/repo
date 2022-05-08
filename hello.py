@@ -56,8 +56,8 @@ with st.echo(code_location='below'):
         ).drop("Harvest.Year", 1)
 
 
-    df_ar = get_data("file://localhost/C:/Users/kitiara/Desktop/streamlit-example2022-master/arabica_data_cleaned.csv")
-    df_ro = get_data("file://localhost/C:/Users/kitiara/Desktop/streamlit-example2022-master/robusta_data_cleaned.csv")
+    df_ar = get_data("https://github.com/Kitiara2/repo/blob/main/arabica_data_cleaned.csv")
+    df_ro = get_data("https://github.com/Kitiara2/repo/blob/main//robusta_data_cleaned.csv")
     df_ro.rename(columns={'Country_of_Origin': 'Country.of.Origin', 'Clean_Cup': 'Clean.Cup'}, inplace=True)
 
     df = pd.concat([df_ar, df_ro], ignore_index=False)
