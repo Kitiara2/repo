@@ -3,3 +3,4 @@ altair
 geopandas
 plotly
 folium
+streamlit-folium
