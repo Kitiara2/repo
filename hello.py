@@ -57,11 +57,12 @@ with st.echo(code_location='below'):
         geo_data=state_geo,
         name="choropleth",
         data=df_countries,
-        columns=["Country_of_Origin", "Clean_Cup"],
+        columns=["id", "Clean_Cup"],
         key_on="feature.id",
         fill_color="YlGn",
         fill_opacity=0.7,
         line_opacity=0.2,
+        legend_name="Unemployment Rate (%)",
     ).add_to(m)
 
     folium.LayerControl().add_to(m)
