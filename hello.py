@@ -78,7 +78,7 @@ with st.echo(code_location='below'):
     folium.Choropleth(
         geo_data=state_geo,
         name="choropleth",
-        data=df_countries,
+        data=df_lands,
         columns=["id", "Clean_Cup"],
         key_on="feature.id",
         fill_color="YlGn",
