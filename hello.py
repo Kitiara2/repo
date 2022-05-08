@@ -40,7 +40,7 @@ with st.echo(code_location='below'):
     
     df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
     df.rename(columns={'Clean.Cup': 'Clean_Cup'}, inplace=True)
-    df_selection = df.groupby(["Country_of_Origin", "harvest_year", "Species"]).agg({'Clean_Cup':'sum', 'Flavor' : 'mean').reset_index()
+    df_selection = df.groupby(["Country_of_Origin", "harvest_year", "Species"]).agg({'Clean_Cup':'sum', 'Flavor' : 'mean'}).reset_index()
     
     url = (
         "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
