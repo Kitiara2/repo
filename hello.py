@@ -72,10 +72,15 @@ with st.echo(code_location='below'):
     
 
     # initialize the map and store it in a m object
-    m = folium.Map(location=[40, -95], zoom_start=4)
+    #m = folium.Map(location=[40, -95], zoom_start=4)
+    
+    london_location = [51.507351, -0.127758]
+
+    m = folium.Map(location=london_location, zoom_start=15)
+    m
 
     # show the map
-    st.write(m)
+    #st.write(m)
 #    url = "https://github.com/Kitiara2/repo/raw/main/france.geojson"
 #    gdf = gpd.read_file(url)
     
