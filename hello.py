@@ -51,30 +51,28 @@ with st.echo(code_location='below'):
     df_lands
 #    state_data = pd.read_csv(state_unemployment)
 
-    state_unemployment = f"{url}/US_Unemployment_Oct2012.csv"
-    state_data = pd.read_csv(state_unemployment)
+#    state_unemployment = f"{url}/US_Unemployment_Oct2012.csv"
+#    state_data = pd.read_csv(state_unemployment)
 
-    m = folium.Map(location=[0,0], zoom_start=1.5)
+#    m = folium.Map(location=[0,0], zoom_start=1.5)
 
-    folium.Choropleth(
-        geo_data=state_geo,
-        name="choropleth",
-        data=state_data,
-        columns=["State", "Unemployment"],
-        key_on="feature.id",
-        fill_color="YlGn",
-        fill_opacity=0.7,
-        line_opacity=0.2,
-        legend_name="Unemployment Rate (%)",
-    ).add_to(m)
+#    folium.Choropleth(
+#        geo_data=state_geo,
+#        name="choropleth",
+#        data=state_data,
+#        columns=["State", "Unemployment"],
+#        key_on="feature.id",
+#        fill_color="YlGn",
+#        fill_opacity=0.7,
+#        line_opacity=0.2,
+#        legend_name="Unemployment Rate (%)",
+#    ).add_to(m)
 
-    folium.LayerControl().add_to(m)
-    st_data = st_folium(m, width = 725)
-    st_data
+#    folium.LayerControl().add_to(m)
+#    st_data = st_folium(m, width = 725)
+#    st_data
 
     m = folium.Map(location=[48, -102], zoom_start=3)
-    
-
     folium.Choropleth(
         geo_data=state_geo,
         name="choropleth",
@@ -88,8 +86,6 @@ with st.echo(code_location='below'):
     ).add_to(m)
 
     folium.LayerControl().add_to(m)
-
-    
     st_data = st_folium(m, width = 725)
     st_data
 
