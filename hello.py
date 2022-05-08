@@ -34,7 +34,7 @@ with st.echo(code_location='below'):
     df_ro.rename(columns={'Country_of_Origin': 'Country.of.Origin', 'Clean_Cup': 'Clean.Cup'}, inplace=True)
     df_ar = get_data("https://github.com/Kitiara2/repo/raw/main/arabica_data_cleaned.csv")
 
-    df = pd.concat([df_ar, df_ro], ignore_index=False)
+    df = pd.concat([df_ar, df_ro], ignore_index=False).drop('Unnamed:0', 1)
 #    df = df_ro
     st.write(df)
     
@@ -43,7 +43,7 @@ with st.echo(code_location='below'):
     )
     state_geo = f"{url}/countries-land.geo.json"
     df_countries = f"{url}/country.csv"
-    df_lands = pd.merge(left_on = 'value', right_on = 'Country.of.Origin')
+    df_lands = pd.merge(df_countries, df, left_on = 'value', right_on = 'Country.of.Origin')
     df_lands
     state_data = pd.read_csv(state_unemployment)
 
