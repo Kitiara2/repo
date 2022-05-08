@@ -65,7 +65,7 @@ with st.echo(code_location='below'):
         fill_color="YlGn",
         fill_opacity=0.7,
         line_opacity=0.2,
-        legend_name="Unemployment Rate (%)",'
+        legend_name="Unemployment Rate (%)",
     ).add_to(m)
 
     folium.LayerControl().add_to(m)
