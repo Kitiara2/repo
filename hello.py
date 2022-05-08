@@ -34,7 +34,7 @@ with st.echo(code_location='below'):
     df_ro.rename(columns={'Country_of_Origin': 'Country.of.Origin', 'Clean_Cup': 'Clean.Cup'}, inplace=True)
     df_ar = get_data("https://github.com/Kitiara2/repo/raw/main/arabica_data_cleaned.csv")
 
-    df = pd.concat([df_ar, df_ro], ignore_index=False).drop('Unnamed:0', 1)
+    df = pd.concat([df_ar, df_ro], ignore_index=False)
 #    df = df_ro
     st.write(df)
     
