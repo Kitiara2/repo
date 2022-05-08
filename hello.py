@@ -69,8 +69,11 @@ with st.echo(code_location='below'):
     ).add_to(m)
 
     folium.LayerControl().add_to(m)
+    st_data = st_folium(m, width = 725)
+    st_data
 
     m = folium.Map(location=[48, -102], zoom_start=3)
+    
 
     folium.Choropleth(
         geo_data=state_geo,
