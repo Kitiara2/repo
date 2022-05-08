@@ -36,7 +36,8 @@ with st.echo(code_location='below'):
 
     df = pd.concat([df_ar, df_ro], ignore_index=False)
 #    df = df_ro
-    st.write(df)
+    df
+    
     df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
     df.rename(columns={'Clean.Cup': 'Clean_Cup'}, inplace=True)
     df_selection = df.groupby(["Country_of_Origin", "harvest_year", "Species"]).sum().reset_index()
@@ -50,7 +51,7 @@ with st.echo(code_location='below'):
     df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
     
     country = st.selectbox(
-        "Species", df["Species"].value_counts().iloc[:10].index
+        "Species", df_lands["Species"].value_counts().iloc[:10].index
     )
 
     df_lands_selection = df_lands[lambda x: x["Species"] == species]
