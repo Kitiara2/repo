@@ -74,10 +74,27 @@ with st.echo(code_location='below'):
     # initialize the map and store it in a m object
     #m = folium.Map(location=[40, -95], zoom_start=4)
     
-    from IPython.display import display
-    LDN_COORDINATES = (51.5074, 0.1278)
-    myMap = folium.Map(location=LDN_COORDINATES, zoom_start=12)
-    myMap
+   import webbrowser
+
+
+    class Map:
+        def __init__(self, center, zoom_start):
+            self.center = center
+            self.zoom_start = zoom_start
+    
+        def showMap(self):
+            #Create the map
+            my_map = folium.Map(location = self.center, zoom_start = self.zoom_start)
+
+            #Display the map
+            my_map.save("map.html")
+            webbrowser.open("map.html")
+
+
+#Define coordinates of where we want to center our map
+coords = [51.5074, 0.1278]
+map = Map(center = coords, zoom_start = 13)
+map.showMap()
 
     # show the map
     #st.write(m)
