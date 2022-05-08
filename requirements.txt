@@ -2,3 +2,4 @@ seaborn
 altair
 geopandas
 plotly
+folium
