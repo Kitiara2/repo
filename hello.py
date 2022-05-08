@@ -4,6 +4,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import altair as alt
+import geopandas as gpd
 
 with st.echo(code_location='below'):
     """
