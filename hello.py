@@ -42,7 +42,8 @@ with st.echo(code_location='below'):
         "https://github.com/Kitiara2/repo/raw/main"
     )
     state_geo = f"{url}/countries-land.geo.json"
-    df_countries = get_data("https://github.com/Kitiara2/repo/raw/main/country.csv")
+    countries =("https://github.com/Kitiara2/repo/raw/main/country.csv")
+    df_countries = pd.read_csv(countries)
     df_lands = pd.merge(df_countries, df, left_on = 'value', right_on = 'Country.of.Origin')
     df_lands
 #    state_data = pd.read_csv(state_unemployment)
