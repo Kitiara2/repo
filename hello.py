@@ -36,7 +36,7 @@ with st.echo(code_location='below'):
 
     df = pd.concat([df_ar, df_ro], ignore_index=False)
 #    df = df_ro
-    df
+#    df
     
     df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
     df.rename(columns={'Clean.Cup': 'Clean_Cup'}, inplace=True)
@@ -49,6 +49,7 @@ with st.echo(code_location='below'):
     countries =("https://github.com/Kitiara2/repo/raw/main/country.csv")
     df_countries = pd.read_csv(countries)
     df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
+    df_lands
     
     country = st.selectbox(
         "Species", df_lands["Species"].value_counts().iloc[:10].index
