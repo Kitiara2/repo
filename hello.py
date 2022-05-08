@@ -38,6 +38,7 @@ with st.echo(code_location='below'):
 #    df = df_ro
     st.write(df)
     df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
+    df.rename(columns={'Clean.Cup': 'Clean_Cup'}, inplace=True)
     df_selection = df.groupby(["Country_of_Origin", "harvest_year", "Species"]).sum().reset_index()
     
     url = (
@@ -56,7 +57,7 @@ with st.echo(code_location='below'):
         geo_data=state_geo,
         name="choropleth",
         data=df_countries,
-        columns=["Country.of.Origin", "Unemployment"],
+        columns=["Country_of_Origin", "Clean_Cup"],
         key_on="feature.id",
         fill_color="YlGn",
         fill_opacity=0.7,
@@ -70,8 +71,6 @@ with st.echo(code_location='below'):
     st_data = st_folium(m, width = 725)
     st_data
 
-    df.rename(columns={'Clean.Cup': 'Clean_Cup'}, inplace=True)
-    df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
 
     country = st.selectbox(
         "Country", df["Country_of_Origin"].value_counts().iloc[:10].index
