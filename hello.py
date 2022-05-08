@@ -51,7 +51,7 @@ with st.echo(code_location='below'):
     df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
     df_lands
     
-    country = st.selectbox(
+    species = st.selectbox(
         "Species", df_lands["Species"].value_counts().iloc[:10].index
     )
 
