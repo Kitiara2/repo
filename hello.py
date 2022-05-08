@@ -33,6 +33,7 @@ with st.echo(code_location='below'):
     df_ro = get_data("https://github.com/Kitiara2/repo/raw/main/robusta_data_cleaned.csv")
     df_ro.rename(columns={'Country_of_Origin': 'Country.of.Origin', 'Clean_Cup': 'Clean.Cup'}, inplace=True)
     df_ar = get_data("https://github.com/Kitiara2/repo/raw/main/arabica_data_cleaned.csv")
+    df_countries = get_data("https://github.com/Kitiara2/repo/raw/main/country.csv")
 
     df = pd.concat([df_ar, df_ro], ignore_index=False)
 #    df = df_ro
@@ -42,10 +43,9 @@ with st.echo(code_location='below'):
         "https://github.com/Kitiara2/repo/raw/main"
     )
     state_geo = f"{url}/countries-land.geo.json"
-    df_countries = f"{url}/country.csv"
     df_lands = pd.merge(df_countries, df, left_on = 'value', right_on = 'Country.of.Origin')
     df_lands
-    state_data = pd.read_csv(state_unemployment)
+#    state_data = pd.read_csv(state_unemployment)
 
     m = folium.Map(location=[48, -102], zoom_start=3)
 
