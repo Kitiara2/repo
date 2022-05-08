@@ -10,6 +10,7 @@ import plotly
 import plotly.graph_objs as go
 import json
 import folium
+import webbrowser
 
 with st.echo(code_location='below'):
     """
@@ -73,8 +74,6 @@ with st.echo(code_location='below'):
 
     # initialize the map and store it in a m object
     #m = folium.Map(location=[40, -95], zoom_start=4)
-    
-   import webbrowser
 
 
     class Map:
