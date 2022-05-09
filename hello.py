@@ -131,7 +131,7 @@ with st.echo(code_location='below'):
     )
 
     species = st.selectbox(
-        "Species", df["Species"].value_counts().iloc[:10].index
+        "Species_1", df["Species"].value_counts().iloc[:10].index
     )
 
 
