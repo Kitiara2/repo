@@ -89,6 +89,65 @@ with st.echo(code_location='below'):
     df_years_selection = df[lambda x: x["harvest_year"] == year]
     df_years_selection
     
+    #пытаемся нарисовать динамический
+    num_steps = len(x)
+    trace_list = [go.Scatter(visible=True, x=[x[0]], y=[f(x)[0]], mode='lines+markers', name='f(x)=x<sup>2</sup>')]
+
+    for i in range(1, len(x)):
+        trace_list.append(go.Scatter(visible=False, x=x[:i+1], y=f(x[:i+1]), mode='lines+markers', name='f(x)=x<sup>2</sup>'))
+
+    fig = go.Figure(data=trace_list)
+
+    steps = []
+    for i in range(num_steps):
+        # Hide all traces
+        step = dict(
+            method = 'restyle',  
+            args = ['visible', [False] * len(fig.data)],
+        )
+        # Enable trace we want to see
+        step['args'][1][i] = True
+    
+        # Add step to step list
+        steps.append(step)
+
+    sliders = [dict(
+        steps = steps,
+    )]
+
+    fig.layout.sliders = sliders
+
+    fig.show()
+    
+    num_steps = len(x)
+    trace_list = [go.Scatter(visible=True, x=[x[0]], y=[f(x)[0]], mode='lines+markers', name='f(x)=x<sup>2</sup>')]
+
+    for i in range(1, len(x)):
+        trace_list.append(go.Scatter(visible=False, x=x[:i+1], y=f(x[:i+1]), mode='lines+markers', name='f(x)=x<sup>2</sup>'))
+
+    fig = go.Figure(data=trace_list)
+
+    steps = []
+    for i in range(num_steps):
+        # Hide all traces
+        step = dict(
+            method = 'restyle',  
+            args = ['visible', [False] * len(fig.data)],
+        )
+        # Enable trace we want to see
+        step['args'][1][i] = True
+    
+        # Add step to step list
+        steps.append(step)
+
+    sliders = [dict(
+        steps = steps,
+    )]
+
+    fig.layout.sliders = sliders
+
+    fig.show()
+    
     country = st.selectbox(
         "Country", df["Country_of_Origin"].value_counts().iloc[:10].index
     )
