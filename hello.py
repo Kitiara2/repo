@@ -96,6 +96,10 @@ with st.echo(code_location='below'):
     def f(x):
         return x**2
     
+    fig1 = go.Figure()
+    fig1.add_trace(go.Scatter(x=x, y=f(x)))
+    fig1.show()
+
     num_steps = len(x)
     trace_list = [go.Scatter(visible=True, x=[x[0]], y=[f(x)[0]], mode='lines+markers', name='f(x)=x<sup>2</sup>')]
 
