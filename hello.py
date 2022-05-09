@@ -52,13 +52,13 @@ with st.echo(code_location='below'):
     species = st.selectbox(
         "Species", ["Arabica", "Robusta"]
     )
-
-    df_lands[lambda zx: 
-        if species in zx["Species"]:
-             True
-    ]
     
-#    df_lands_selection
+    df_lands_selection = []
+    for row in df_lands.itertuples():
+        if species in row.Species:
+            df_lands_selection.append(pd.series(row))
+    
+    df_lands_selection
 
     m = folium.Map(location=[48, -102], zoom_start=3)
     
