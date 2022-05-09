@@ -50,7 +50,7 @@ with st.echo(code_location='below'):
     df_lands
     
     species = st.selectbox(
-        "Species", df_lands["Species"].value_counts().iloc[:10].index
+        "Species", ["Arabica", "Robusta"]
     )
 
     df_lands_selection = df_lands[lambda x: species in x["Species"]]
