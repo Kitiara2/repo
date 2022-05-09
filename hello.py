@@ -9,6 +9,8 @@ import geopandas as gpd
 from plotly.graph_objs import Scatter, Figure, Layout
 import plotly
 import plotly.graph_objs as go
+import plotly.express as px
+from plotly.subplots import make_subplots
 import json
 import folium
 #import webbrowser
