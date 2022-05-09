@@ -43,7 +43,7 @@ with st.echo(code_location='below'):
     url = (
         "https://github.com/Kitiara2/repo/raw/main"
     )
-    state_geo = f"{url}/world.json"
+    state_geo = f"{url}/world.geojson"
     countries =("https://github.com/Kitiara2/repo/raw/main/country.csv")
     df_countries = pd.read_csv(countries)
     df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
