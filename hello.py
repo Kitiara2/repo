@@ -95,9 +95,14 @@ with st.echo(code_location='below'):
     x = np.arange(0, 5, 0.1)
     def f(x):
         return x**2
+
+    
+    xr = np.arange(0, 5, 0.1)
+    def fr(xr):
+        return xr**2
     
     fig1 = go.Figure()
-    fig1.add_trace(go.Scatter(x=x, y=f(x)))
+    fig1.add_trace(go.Scatter(x=xr, y=fr(xr)))
     fig1.show()
 
     num_steps = len(x)
