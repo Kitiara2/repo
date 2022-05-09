@@ -53,7 +53,10 @@ with st.echo(code_location='below'):
         "Species", ["Arabica", "Robusta"]
     )
 
-    df_lands.loc[lambda zx: (species in zx["Species"]) ]
+    df_lands[lambda zx: 
+        if species in zx["Species"]:
+             True
+    ]
     
 #    df_lands_selection
 
