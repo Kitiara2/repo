@@ -82,7 +82,7 @@ with st.echo(code_location='below'):
     st_data = st_folium(m, width = 725)
     st_data
     
-    df_years = df.groupby(["Country_of_Origin", "harvest_year"]).agg({'Arabica' : 'sum', 'Robusta' : 'sum', 'Clean_Cup':'sum', 'Aroma' : 'mean', 'Flavor' : 'mean', 'Aftertaste' : 'mean', 'Acidity' : 'mean', 'Body' : 'mean', 'Balance' : 'mean', 'Species' : 'unique'}).reset_index()
+    df_years = df.groupby("harvest_year"]).agg({'Arabica' : 'sum', 'Robusta' : 'sum', 'Clean_Cup':'sum', 'Aroma' : 'mean', 'Flavor' : 'mean').reset_index()
     
     year = st.selectbox(
         "Year", df_years["harvest_year"].value_counts().iloc[:10].index
@@ -108,7 +108,7 @@ with st.echo(code_location='below'):
     num_steps = len(x)
     trace_list = [go.Scatter(visible=True, x=[x[0]], y=[f(x)[0]], mode='lines+markers', name='f(x)=x<sup>2</sup>')]
 
-    for i in range(1, len(x)):
+    for i in df:
         trace_list.append(go.Scatter(visible=False, x=x[:i+1], y=f(x[:i+1]), mode='lines+markers', name='f(x)=x<sup>2</sup>'))
 
     fig = go.Figure(data=trace_list)
