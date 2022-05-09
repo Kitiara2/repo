@@ -32,11 +32,11 @@ with st.echo(code_location='below'):
 
     df_ro = get_data("https://github.com/Kitiara2/repo/raw/main/robusta_data_cleaned.csv")
     df_ro.rename(columns={'Country_of_Origin': 'Country.of.Origin', 'Clean_Cup': 'Clean.Cup'}, inplace=True)
-    df_ro[Robusta] = 1
-    df_ro[Arabica] = 0
+    df_ro['Robusta'] = 1
+    df_ro['Arabica'] = 0
     df_ar = get_data("https://github.com/Kitiara2/repo/raw/main/arabica_data_cleaned.csv")
-    df_ar[Arabica] = 1
-    df_ar[Robusta] = 0
+    df_ar['Arabica'] = 1
+    df_ar['Robusta'] = 0
     df = pd.concat([df_ar, df_ro], ignore_index=False)
     
     df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
@@ -56,12 +56,14 @@ with st.echo(code_location='below'):
         "Species", ["Arabica", "Robusta"]
     )
     
-    df_lands_selection = []
-    acc = 0
-    for row in df_lands.itertuples():
-        acc+=1
-        if species in row.Species:
-            df_lands_selection.addm(df_lands.iloc[acc])
+    df_lands_selection = df[lambda x: x[species] > 0]
+    
+#    df_lands_selection = []
+#    acc = 0
+#    for row in df_lands.itertuples():
+#        acc+=1
+#        if species in row.Species:
+#            df_lands_selection.addm(df_lands.iloc[acc])
     
     df_lands_selection
 
