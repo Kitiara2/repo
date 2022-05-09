@@ -90,7 +90,7 @@ with st.echo(code_location='below'):
 
     df_years_selection = df[lambda x: x["harvest_year"] == year]
     df_years_selection
-    trace_list = [go.Scatter(visible=True, x=[0,1], y=[0,1], mode='markers', name='cups')]
+    trace_list = [go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups')]
 
 #    for i in df_years_selection:
 #        trace_list.append(go.Scatter(visible=True, x=i['Favor'], y=i['Aroma'], mode='markers', name='cups'))
