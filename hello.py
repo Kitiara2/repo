@@ -82,7 +82,7 @@ with st.echo(code_location='below'):
     st_data = st_folium(m, width = 725)
     st_data
     
-    df_years = df.groupby("harvest_year"]).agg({'Arabica' : 'sum', 'Robusta' : 'sum', 'Clean_Cup':'sum', 'Aroma' : 'mean', 'Flavor' : 'mean').reset_index()
+    df_years = df
     
     year = st.selectbox(
         "Year", df_years["harvest_year"].value_counts().iloc[:10].index
@@ -92,45 +92,13 @@ with st.echo(code_location='below'):
     df_years_selection
     
     #пытаемся нарисовать динамический
-    x = np.arange(0, 5, 0.1)
-    def f(x):
-        return x**2
-
     
-    xr = np.arange(0, 5, 0.1)
-    def fr(xr):
-        return xr**2
     
-    fig1 = go.Figure()
-    fig1.add_trace(go.Scatter(x=xr, y=fr(xr)))
-    fig1.show()
-
-    num_steps = len(x)
-    trace_list = [go.Scatter(visible=True, x=[x[0]], y=[f(x)[0]], mode='lines+markers', name='f(x)=x<sup>2</sup>')]
-
+    
     for i in df:
-        trace_list.append(go.Scatter(visible=False, x=x[:i+1], y=f(x[:i+1]), mode='lines+markers', name='f(x)=x<sup>2</sup>'))
+        trace_list.append(go.Scatter(visible=True, x=i.Favor, y=i.Aroma, mode='markers', name='cups'))
 
     fig = go.Figure(data=trace_list)
-
-    steps = []
-    for i in range(num_steps):
-        # Hide all traces
-        step = dict(
-            method = 'restyle',  
-            args = ['visible', [False] * len(fig.data)],
-        )
-        # Enable trace we want to see
-        step['args'][1][i] = True
-    
-        # Add step to step list
-        steps.append(step)
-
-    sliders = [dict(
-        steps = steps,
-    )]
-
-    fig.layout.sliders = sliders
 
     st.plotly_chart(fig)
     
