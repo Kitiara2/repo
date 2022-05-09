@@ -53,9 +53,9 @@ with st.echo(code_location='below'):
         "Species", ["Arabica", "Robusta"]
     )
 
-    df_lands_selection = df_lands.loc[lambda zx: species in zx["Species"], : ]
+    df_lands.loc[lambda zx: species in zx["Species"], : ]
     
-    df_lands_selection
+#    df_lands_selection
 
     m = folium.Map(location=[48, -102], zoom_start=3)
     
