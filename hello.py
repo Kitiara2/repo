@@ -49,18 +49,18 @@ with st.echo(code_location='below'):
     df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
     df_lands
     
-#    species = st.selectbox(
-#        "Species", df_lands["Species"].value_counts().iloc[:10].index
- #   )
+    species = st.selectbox(
+        "Species", df_lands["Species"].value_counts().iloc[:10].index
+    )
 
-#    df_lands_selection = df_lands[lambda x: x["Species"] == species]
-#    df_lands_selection
+    df_lands_selection = df_lands[lambda x: x["Species"] in species]
+    df_lands_selection
 
     m = folium.Map(location=[48, -102], zoom_start=3)
     folium.Choropleth(
         geo_data=state_geo,
         name="choropleth",
-        data=df_lands,
+        data=df_lands_selection,
         columns=["id", "Clean_Cup"],
         key_on="feature.properties.WB_A2",
         fill_color="YlGn",
