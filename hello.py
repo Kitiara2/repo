@@ -55,6 +55,7 @@ with st.echo(code_location='below'):
 
     df_lands_selection = []
     for row in df_lands.itertuples():
+        row['Species']
         if species in row['Species']:
             df_lands_selection.addend(row)
     
