@@ -56,7 +56,7 @@ with st.echo(code_location='below'):
         "Species", ["Arabica", "Robusta"]
     )
     
-    df_lands_selection = df[lambda x: x[species] > 0]
+    df_lands_selection = df_lands[lambda x: x[species] > 0]
     
 #    df_lands_selection = []
 #    acc = 0
