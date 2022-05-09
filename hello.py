@@ -132,7 +132,7 @@ with st.echo(code_location='below'):
 
     fig.layout.sliders = sliders
 
-    fig.show()
+    st.plotly_chart(fig)
     
     country = st.selectbox(
         "Country", df["Country_of_Origin"].value_counts().iloc[:10].index
