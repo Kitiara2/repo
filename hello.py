@@ -92,6 +92,10 @@ with st.echo(code_location='below'):
     df_years_selection
     
     #пытаемся нарисовать динамический
+    x = np.arange(0, 5, 0.1)
+    def f(x):
+        return x**2
+    
     num_steps = len(x)
     trace_list = [go.Scatter(visible=True, x=[x[0]], y=[f(x)[0]], mode='lines+markers', name='f(x)=x<sup>2</sup>')]
 
