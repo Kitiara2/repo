@@ -90,12 +90,8 @@ with st.echo(code_location='below'):
 
     df_years_selection = df[lambda x: x["harvest_year"] == year]
     df_years_selection
-    
-    #пытаемся нарисовать динамический
-    
-    
-    
-    for i in df:
+    trace_list=[]
+    for i in df_years_selection:
         trace_list.append(go.Scatter(visible=True, x=i.Favor, y=i.Aroma, mode='markers', name='cups'))
 
     fig = go.Figure(data=trace_list)
