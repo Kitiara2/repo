@@ -75,7 +75,7 @@ with st.echo(code_location='below'):
         data=df_lands_selection,
         columns=["id", "Clean_Cup"],
         key_on="feature.properties.WB_A2",
-        fill_color="YlGn",
+        fill_color="YlGn" if species = 'Arabica' else "PuOr",
         fill_opacity=0.7,
         line_opacity=0.2,
         legend_name="Clean_Cup",
