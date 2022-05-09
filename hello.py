@@ -53,11 +53,7 @@ with st.echo(code_location='below'):
         "Species", ["Arabica", "Robusta"]
     )
 
-    df_lands_selection = []
-    for row in df_lands.itertuples():
-        row
-        if species in row['Species']:
-            df_lands_selection.addend(row)
+    df_lands_selection = df_lands.loc[lambda zx: species in zx["Species"], : ]
     
     df_lands_selection
 
