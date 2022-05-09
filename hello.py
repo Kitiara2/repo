@@ -80,8 +80,15 @@ with st.echo(code_location='below'):
     st_data = st_folium(m, width = 725)
     st_data
     
+    df_years = df.groupby(["Country_of_Origin", "harvest_year"]).agg({'Arabica' : 'sum', 'Robusta' : 'sum', 'Clean_Cup':'sum', 'Aroma' : 'mean', 'Flavor' : 'mean', 'Aftertaste' : 'mean', 'Acidity' : 'mean', 'Body' : 'mean', 'Balance' : 'mean', 'Species' : 'unique'}).reset_index()
     
+    year = st.selectbox(
+        "Year", df_years["harvest_year"].value_counts().iloc[:10].index
+    )
 
+    df_years_selection = df[lambda x: x["harvest_year"] == year]
+    df_years_selection
+    
     country = st.selectbox(
         "Country", df["Country_of_Origin"].value_counts().iloc[:10].index
     )
