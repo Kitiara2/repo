@@ -58,12 +58,6 @@ with st.echo(code_location='below'):
     
     df_lands_selection = df_lands[lambda x: x[species] > 0]
     
-#    df_lands_selection = []
-#    acc = 0
-#    for row in df_lands.itertuples():
-#        acc+=1
-#        if species in row.Species:
-#            df_lands_selection.addm(df_lands.iloc[acc])
     
     df_lands_selection
 
@@ -77,6 +71,7 @@ with st.echo(code_location='below'):
         key_on="feature.properties.WB_A2",
         fill_color="YlGn" if species == 'Arabica' else "PuOr",
         fill_opacity=0.7,
+        nan_fill_opacity = 1
         line_opacity=0.2,
         legend_name="Clean_Cup",
     ).add_to(m)
