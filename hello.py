@@ -53,10 +53,11 @@ with st.echo(code_location='below'):
         "Species", df_lands["Species"].value_counts().iloc[:10].index
     )
 
-    df_lands_selection = df_lands[lambda x: x["Species"] in species]
+    df_lands_selection = df_lands[lambda x: species in x["Species"]]
     df_lands_selection
 
     m = folium.Map(location=[48, -102], zoom_start=3)
+    
     folium.Choropleth(
         geo_data=state_geo,
         name="choropleth",
