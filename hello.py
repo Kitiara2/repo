@@ -41,7 +41,7 @@ with st.echo(code_location='below'):
     
     df.rename(columns={'Country.of.Origin': 'Country_of_Origin'}, inplace=True)
     df.rename(columns={'Clean.Cup': 'Clean_Cup'}, inplace=True)
-    df_selection = df.groupby(["Country_of_Origin", "harvest_year"]).agg({'Arabica' : 'sum', 'Robusta' : 'sum', 'Clean_Cup':'sum', 'Aroma' : 'mean', 'Flavor' : 'mean', 'Aftertaste' : 'mean', 'Acidity' : 'mean', 'Body' : 'mean', 'Balance' : 'mean', 'Species' : 'unique'}).reset_index()
+    df_selection = df.groupby("Country_of_Origin").agg({'Arabica' : 'sum', 'Robusta' : 'sum', 'Clean_Cup':'sum', 'Aroma' : 'mean', 'Flavor' : 'mean', 'Aftertaste' : 'mean', 'Acidity' : 'mean', 'Body' : 'mean', 'Balance' : 'mean', 'Species' : 'unique'}).reset_index()
     
     url = (
         "https://github.com/Kitiara2/repo/raw/main"
@@ -79,7 +79,8 @@ with st.echo(code_location='below'):
     folium.LayerControl().add_to(m)
     st_data = st_folium(m, width = 725)
     st_data
-
+    
+    
 
     country = st.selectbox(
         "Country", df["Country_of_Origin"].value_counts().iloc[:10].index
