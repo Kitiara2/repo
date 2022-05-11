@@ -89,12 +89,17 @@ with st.echo(code_location='below'):
    # fig.add_trace(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
    # st.plotly_chart(fig)
     
+    trace_list = []
+    
     frames = []
     for year in set(df_years["harvest_year"]):
         df_years_selection = df[lambda x: x["harvest_year"] == year]
-        df_years_selection
-        fig.add_trace(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
-        st.plotly_chart(fig)
+        #df_years_selection
+        trace_list.append(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
+        
+    
+    fig = go.Figure(data=trace_list)
+    st.plotly_chart(fig)
         
     #fig.frames = frames
     #fig.update_layout(legend_orientation="h",
