@@ -84,6 +84,7 @@ with st.echo(code_location='below'):
     
     df_years = df
     df_years_selection = df_years
+    
     fig = go.Figure()
     fig.add_trace(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
     
@@ -91,12 +92,14 @@ with st.echo(code_location='below'):
     for year in set(df_years["harvest_year"]):
         df_years_selection = df[lambda x: x["harvest_year"] == year]
         frames.append(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
-    fig.frames = frames
-    fig.update_layout(legend_orientation="h",
-                  legend=dict(x=.5, xanchor="center"),
-                  updatemenus=[dict(type="buttons", buttons=[dict(label="Play", method="animate", args=[None])])],
-                  margin=dict(l=0, r=0, t=0, b=0))
-    fig.update_traces(hoverinfo="all", hovertemplate="Аргумент: %{x}<br>Функция: %{y}")
+        st.plotly_chart(fig)
+        
+    #fig.frames = frames
+    #fig.update_layout(legend_orientation="h",
+   #               legend=dict(x=.5, xanchor="center"),
+    #              updatemenus=[dict(type="buttons", buttons=[dict(label="Play", method="animate", args=[None])])],
+   #               margin=dict(l=0, r=0, t=0, b=0))
+   # fig.update_traces(hoverinfo="all", hovertemplate="Аргумент: %{x}<br>Функция: %{y}")
 
     st.plotly_chart(fig)
     
