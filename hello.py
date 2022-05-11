@@ -83,6 +83,7 @@ with st.echo(code_location='below'):
     st_data
     
     df_years = df
+    df_years_selection = df_years
     fig = go.Figure()
     fig.add_trace(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
     
