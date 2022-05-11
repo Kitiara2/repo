@@ -91,8 +91,10 @@ with st.echo(code_location='below'):
     df_years_selection = df[lambda x: x["harvest_year"] == year]
     df_years_selection
     fig = go.Figure()
-    for rec in df_years_selection:
-        fig.add_trace(go.Scatter(visible=True, x=rec['Flavor'], y=rec['Aroma'], mode='markers', name='cups',marker=dict(size=rec['Clean_Cup'])))
+    fig.add_trace(go.Scatter(visible=True, x=rec['Flavor'], y=rec['Aroma'], mode='markers', name='cups',marker=dict(size=rec['Clean_Cup'])))
+#    for rec in df_years_selection:
+#        fig.add_trace(go.Scatter(visible=True, x=rec['Flavor'], y=rec['Aroma'], mode='markers', name='cups',marker=dict(size=rec['Clean_Cup'])))
+#        fig.add_trace(go.Scatter(visible=True, x=rec['Flavor'], y=rec['Aroma'], mode='markers', name='cups'))
                 
 #    for i in df_years_selection:
 #        trace_list.append(go.Scatter(visible=True, x=i['Favor'], y=i['Aroma'], mode='markers', name='cups'))
