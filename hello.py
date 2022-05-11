@@ -96,7 +96,26 @@ with st.echo(code_location='below'):
         df_years_selection = df[lambda x: x["harvest_year"] == year]
         #df_years_selection
         trace_list.append(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
+    
+    num_steps = len(set(df_years["harvest_year"]):)
+    steps = []
+    for i in range(num_steps):
+        step = dict(
+            method = 'restyle',  
+            args = ['visible', [False] * len(fig.data)],
+        )
+        # Enable trace we want to see
+        step['args'][1][i] = True
         
+        # Add step to step list
+        steps.append(step)
+        
+    sliders = [dict(
+        steps = steps,
+    )]
+
+    fig.layout.sliders = sliders
+
     
     fig = go.Figure(data=trace_list)
     st.plotly_chart(fig)
