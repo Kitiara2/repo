@@ -83,23 +83,19 @@ with st.echo(code_location='below'):
     st_data
     
     df_years = df
-    
-    year = st.selectbox(
-        "Year", df_years["harvest_year"].value_counts().iloc[:10].index
-    )
-
-    df_years_selection = df[lambda x: x["harvest_year"] == year]
-    df_years_selection = df_years.groupby(["harvest_year"])
-    df_years_selection
-    
     fig = go.Figure()
-    fig.add_trace(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
-#    for year in df_years["harvest_year"]:
-#        fig.add_trace(go.Scatter(visible=True, x=rec['Flavor'], y=rec['Aroma'], mode='markers', name='cups',marker=dict(size=rec['Clean_Cup'])))
-#        fig.add_trace(go.Scatter(visible=True, x=rec['Flavor'], y=rec['Aroma'], mode='markers', name='cups'))
-                
-#    for i in df_years_selection:
-#        trace_list.append(go.Scatter(visible=True, x=i['Favor'], y=i['Aroma'], mode='markers', name='cups'))
+        fig.add_trace(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
+    
+    frames = []
+    for year in set(df_years["harvest_year"]):
+        df_years_selection = df[lambda x: x["harvest_year"] == year]
+        frames.append(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
+    fig.frames = frames
+    fig.update_layout(legend_orientation="h",
+                  legend=dict(x=.5, xanchor="center"),
+                  updatemenus=[dict(type="buttons", buttons=[dict(label="Play", method="animate", args=[None])])],
+                  margin=dict(l=0, r=0, t=0, b=0))
+    fig.update_traces(hoverinfo="all", hovertemplate="Аргумент: %{x}<br>Функция: %{y}")
 
     st.plotly_chart(fig)
     
