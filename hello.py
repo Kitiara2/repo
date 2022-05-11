@@ -97,7 +97,7 @@ with st.echo(code_location='below'):
         #df_years_selection
         trace_list.append(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
     
-    num_steps = len(set(df_years["harvest_year"]):)
+    num_steps = len(set(df_years["harvest_year"]))
     steps = []
     for i in range(num_steps):
         step = dict(
