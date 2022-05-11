@@ -89,10 +89,12 @@ with st.echo(code_location='below'):
     )
 
     df_years_selection = df[lambda x: x["harvest_year"] == year]
+    df_years_selection = df_years.groupby(["harvest_year"])
     df_years_selection
+    
     fig = go.Figure()
     fig.add_trace(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
-#    for rec in df_years_selection:
+#    for year in df_years["harvest_year"]:
 #        fig.add_trace(go.Scatter(visible=True, x=rec['Flavor'], y=rec['Aroma'], mode='markers', name='cups',marker=dict(size=rec['Clean_Cup'])))
 #        fig.add_trace(go.Scatter(visible=True, x=rec['Flavor'], y=rec['Aroma'], mode='markers', name='cups'))
                 
