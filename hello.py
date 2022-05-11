@@ -84,7 +84,7 @@ with st.echo(code_location='below'):
     
     df_years = df
     fig = go.Figure()
-        fig.add_trace(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
+    fig.add_trace(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
     
     frames = []
     for year in set(df_years["harvest_year"]):
