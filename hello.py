@@ -98,7 +98,7 @@ with st.echo(code_location='below'):
     for i in range(num_steps):
         step = dict(
             method = 'restyle',  
-            args = [{'visible', [False] * len(fig.data)},
+            args = [{'visible': [False] * len(fig.data)},
                    {"title": "Slider switched to step: " + str(i)}],
         )
         # Enable trace we want to see
