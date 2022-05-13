@@ -92,7 +92,7 @@ with st.echo(code_location='below'):
         trace_list.append(go.Scatter(visible=False, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
     
     fig = go.Figure(data=trace_list)
-    fig = px.scatter(animation_frame=set(df_years["harvest_year"]))
+    fig = px.scatter(animation_frame=df_years["harvest_year"])
     
     num_steps = len(set(df_years["harvest_year"]))
     steps = []
