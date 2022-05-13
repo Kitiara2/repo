@@ -102,7 +102,7 @@ with st.echo(code_location='below'):
                    {"title": "Slider switched to step: " + str(i)}],
         )
         # Enable trace we want to see
-        step['args'][1][i] = True
+        step['args'][0]['visible'][i] = True
         
         # Add step to step list
         steps.append(step)
