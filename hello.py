@@ -99,7 +99,7 @@ with st.echo(code_location='below'):
         step = dict(
             method = 'restyle',  
             args = [{'visible': [False] * len(fig.data)},
-                   {"title": "Slider switched to step: " + str(df_years["harvest_year"][i][1])}],
+                   {"title": "Slider switched to step: " + str(i)}],
         )
         # Enable trace we want to see
         step['args'][0]['visible'][i] = True
