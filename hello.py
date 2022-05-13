@@ -114,7 +114,7 @@ with st.echo(code_location='below'):
     fig.layout.sliders = sliders
 
     
-    fig = go.Figure(data=trace_list)
+#    fig = go.Figure(data=trace_list)
     st.plotly_chart(fig)
         
     #fig.frames = frames
