@@ -17,11 +17,9 @@ import folium
 
 with st.echo(code_location='below'):
     
-    primaryColor="#F63366"
-    backgroundColor="#FFFFFF"
-    secondaryBackgroundColor="#F0F2F6"
-    textColor="#262730"
-    font="sans serif"
+    [theme]
+    base="dark"
+    primaryColor="purple"
 
 
 
