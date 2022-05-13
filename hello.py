@@ -15,11 +15,11 @@ import json
 import folium
 #import webbrowser
 
+[theme]
+base="dark"
+primaryColor="purple"
+
 with st.echo(code_location='below'):
-    
-    [theme]
-    base="dark"
-    primaryColor="purple"
 
 
 
