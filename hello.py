@@ -91,11 +91,12 @@ with st.echo(code_location='below'):
     
     trace_list = []
     
-    frames = []
     for year in set(df_years["harvest_year"]):
         df_years_selection = df[lambda x: x["harvest_year"] == year]
         #df_years_selection
         trace_list.append(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
+    
+    fig = go.Figure(data=trace_list)
     
     num_steps = len(set(df_years["harvest_year"]))
     steps = []
