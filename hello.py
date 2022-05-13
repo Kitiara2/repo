@@ -96,11 +96,10 @@ with st.echo(code_location='below'):
     num_steps = len(set(df_years["harvest_year"]))
     steps = []
     for i in range(num_steps):
-        df_years["harvest_year"][i]
         step = dict(
             method = 'restyle',  
             args = [{'visible': [False] * len(fig.data)},
-                   {"title": "Slider switched to step: " + str(i)}],
+                   {"title": "Slider switched to step: " + df_years["harvest_year"][i][1]}],
         )
         # Enable trace we want to see
         step['args'][0]['visible'][i] = True
