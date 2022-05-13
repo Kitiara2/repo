@@ -85,7 +85,7 @@ with st.echo(code_location='below'):
     df_years = df
     df_years_selection = df_years
     
-    fig = go.Figure()
+ #   fig = go.Figure()
    # fig.add_trace(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
    # st.plotly_chart(fig)
     
@@ -96,7 +96,7 @@ with st.echo(code_location='below'):
         #df_years_selection
         trace_list.append(go.Scatter(visible=True, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
     
-#    fig = go.Figure(data=trace_list)
+    fig = go.Figure(data=trace_list)
     
     num_steps = len(set(df_years["harvest_year"]))
     steps = []
