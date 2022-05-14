@@ -107,11 +107,11 @@ with st.echo(code_location='below'):
         df_years_selection = df[lambda x: x["harvest_year"] == year]
         trace_list.append(go.Scatter(visible=False, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
     
+    fig = go.Figure(data=trace_list)
     fig.update_layout(title="Характеристики поставок",
                   xaxis_title="Вкус",
                   yaxis_title="Аромат",
                   margin=dict(l=0, r=0, t=30, b=0))
-    fig = go.Figure(data=trace_list)
     
     num_steps = len(set(df_years["harvest_year"]))
     steps = []
