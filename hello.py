@@ -107,8 +107,7 @@ with st.echo(code_location='below'):
         df_years_selection = df[lambda x: x["harvest_year"] == year]
         trace_list.append(go.Scatter(visible=False, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
     
-    fig.update_layout(legend_orientation="h",
-                  legend=dict(x=.5, xanchor="center"),
+    fig.update_layout(legend=dict(x=.5, xanchor="center"),
                   title="Характеристики поставок",
                   xaxis_title="Вкус",
                   yaxis_title="Аромат",
