@@ -104,7 +104,7 @@ with st.echo(code_location='below'):
     trace_list = []
     
     for year in list(set(df_years["harvest_year"])):
-        ddf_years_selection = df[lambda x: x["harvest_year"] == year]
+        df_years_selection = df[lambda x: x["harvest_year"] == year]
         trace_list.append(go.Scatter(visible=False, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name=df_years_selection['Country_of_Origin'], marker=dict(size=df_years_selection['Clean_Cup'])))
     
     fig = go.Figure(data=trace_list)
