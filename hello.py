@@ -30,6 +30,7 @@ with st.echo(code_location='below'):
     """
     
     @st.cache
+    
     def get_data(data_url): 
         return (
             pd.read_csv(data_url)
@@ -71,12 +72,7 @@ with st.echo(code_location='below'):
     species = st.selectbox(
         "Species", ["Arabica", "Robusta"]
     )
-    
-    
-    
     df_lands_selection = df_lands[lambda x: x[species] > 0]
-    
-    
     df_lands_selection
 
     m = folium.Map(location=[48, -102], zoom_start=1)
@@ -98,15 +94,25 @@ with st.echo(code_location='below'):
     st_data = st_folium(m, width = 725)
     st_data
     
+    ""
+    "На карте агрегированы данные за все представленные в датасете года, но давайте посмотрим на динамику"
+    "(На следующем графике можно увидеть статистику по годам. В качестве главных характеристик партии выбраны вкус и аромат кофе."
+    
     df_years = df
     df_years_selection = df_years
     
     trace_list = []
     
-    for year in set(df_years["harvest_year"]):
+    for year in list(set(df_years["harvest_year"])):
         df_years_selection = df[lambda x: x["harvest_year"] == year]
         trace_list.append(go.Scatter(visible=False, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name='cups',marker=dict(size=df_years_selection['Clean_Cup'])))
     
+    fig.update_layout(legend_orientation="h",
+                  legend=dict(x=.5, xanchor="center"),
+                  title="Характеристики поставок",
+                  xaxis_title="Вкус",
+                  yaxis_title="Аромат",
+                  margin=dict(l=0, r=0, t=30, b=0))
     fig = go.Figure(data=trace_list)
     
     num_steps = len(set(df_years["harvest_year"]))
