@@ -131,6 +131,10 @@ with st.echo(code_location='below'):
     fig.layout.sliders = sliders
     st.plotly_chart(fig)
     
+    ""
+    "Теперь посмотрим на данные по отдельным странам"
+    ""
+    
     country = st.selectbox(
         "Country", df["Country_of_Origin"].value_counts().iloc[:10].index
     )
@@ -149,13 +153,13 @@ with st.echo(code_location='below'):
             chart
             + chart.transform_loess("harvest_year", "Number_of_Bags").mark_line()
         ).interactive()
-        # .transform_loess добавляет сглаживающую кривую
     )
 
+    
     region = st.selectbox(
         "Region", df["Region"].value_counts().iloc[:10].index
     )
-
+    
 
     df_selection = df[lambda x: x["Region"] == region]
     df_selection = df_selection.groupby(["Country_of_Origin", "harvest_year", "Species"]).sum().reset_index()
@@ -170,9 +174,7 @@ with st.echo(code_location='below'):
     st.altair_chart(
         (
             chart
-#            + chart.transform_loess("harvest_year", "Clean_Cup").mark_line()
         ).interactive()
-        # .transform_loess добавляет сглаживающую кривую
     )
 
     species = st.selectbox(
