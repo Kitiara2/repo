@@ -20,7 +20,27 @@ with st.echo(code_location='below'):
 
 
     @st.cache
+    
+    """
+    ## Hello, World!
+    """
 
+
+    def print_hello(name="World"):
+        st.write(f"### Hello, {name}!")
+
+
+    name = st.text_input("Your name", key="name", value="Anonymous")
+    print_hello(name)
+    
+    """
+    ## Добавим графики
+    Чтобы заработали библиотеки seaborn и altair, нужно добавить в проект файл 
+    `requirements.txt` с такими строчками:
+    
+        seaborn
+        altair
+    """
     def get_data(data_url): 
         return (
             pd.read_csv(data_url)
