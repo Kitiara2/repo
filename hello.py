@@ -145,7 +145,7 @@ with st.echo(code_location='below'):
     chart = (
         alt.Chart(df_selection)
         .mark_circle()
-        .encode(x=alt.X("harvest_year:T"), y="Number_of_Bags", color='Species')
+        .encode(x=alt.X("harvest_year:T"), y="Number_of_Bags", color = "Balance:Q")
     )
 
     st.altair_chart(
