@@ -63,13 +63,15 @@ with st.echo(code_location='below'):
     df_lands = pd.merge(df_countries, df_selection, left_on = 'value', right_on = 'Country_of_Origin')
     df_lands
     
+    ""
+    "Посмотрим, где добывают кофе"
+    "(здесь можно выбрать сорт зёрен, поменять масштаб или передвинуть карту)"
+    ""
+    
     species = st.selectbox(
         "Species", ["Arabica", "Robusta"]
     )
     
-    
-    "Посмотрим, где добывают кофе"
-    "(здесь можно выбрать сорт зёрен, поменять масштаб или передвинуть карту)"
     
     
     df_lands_selection = df_lands[lambda x: x[species] > 0]
