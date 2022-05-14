@@ -151,7 +151,7 @@ with st.echo(code_location='below'):
     st.altair_chart(
         (
             chart
-            + chart.transform_loess("Год", "Количество упаковок").mark_line()
+            + chart.transform_loess("harvest_year", "Number_of_Bags").mark_line()
         ).interactive()
     )
 
