@@ -133,6 +133,7 @@ with st.echo(code_location='below'):
     
     ""
     "Теперь посмотрим на данные по отдельным странам"
+    "Цвет точек соответствует оценке баланса всех его показателей"
     ""
     
     country = st.selectbox(
@@ -156,11 +157,14 @@ with st.echo(code_location='below'):
     )
 
     
+    ""
+    "Теперь посмотрим на регионы, в которых добывается кофе."
+    "При наведении на точку можно узнать конкретную страну, в которой собрали партию, обозначенную ей"
+    ""
     region = st.selectbox(
         "Region", df["Region"].value_counts().iloc[:30].index
     )
     
-    df
     
     df_selection = df[lambda x: x["Region"] == region]
     df_selection = df_selection.groupby(["Country_of_Origin", "harvest_year", "Species"]).sum().reset_index()
@@ -181,7 +185,10 @@ with st.echo(code_location='below'):
     species = st.selectbox(
         "Species_1", df["Species"].value_counts().iloc[:10].index
     )
-
+    
+    ""
+    "Последний график показывает распределение добычи каждого вида кофе по странам, его добывающим"
+    ""
 
     df_selection = df[lambda x: x["Species"] == species]
     df_selection = df_selection.drop("harvest_year", 1).groupby("Country_of_Origin").sum().reset_index()
@@ -192,7 +199,7 @@ with st.echo(code_location='below'):
         .encode(
             theta=alt.Theta("Clean_Cup:Q", stack=True),
             radius=alt.Radius("Clean_Cup", scale=alt.Scale(type="sqrt", zero=True, rangeMin=20)),
-            color="Clean_Cup:N",
+            color="Body:N",
         )
     )
 
