@@ -103,7 +103,7 @@ with st.echo(code_location='below'):
     
     for year in list(set(df_years["harvest_year"])):
         df_years_selection = df[lambda x: x["harvest_year"] == year]
-        trace_list.append(go.Scatter(visible=False, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name = "cups", marker=dict(color = "lightgreen" if df_years_selection["Species"] == 'Arabica' else "lightblue", size=4*df_years_selection['Clean_Cup'])))
+        trace_list.append(go.Scatter(visible=False, x=df_years_selection['Flavor'], y=df_years_selection['Aroma'], mode='markers', name = "cups", marker=dict(size=4*df_years_selection['Clean_Cup'])))
     
     fig = go.Figure(data=trace_list)
     fig.update_layout(title="Характеристики поставок",
@@ -119,7 +119,6 @@ with st.echo(code_location='below'):
             args = [{'visible': [False] * len(fig.data)},
                    {"title": "Slider switched to step: " + str(i)}],
         )
-        # Enable trace we want to see
         step['args'][0]['visible'][i] = True
         
         # Add step to step list
