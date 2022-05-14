@@ -16,11 +16,6 @@ import folium
 #import webbrowser
 
 with st.echo(code_location='below'):
-
-
-
-    @st.cache
-    
     """
     ## Hello, World!
     """
@@ -41,6 +36,8 @@ with st.echo(code_location='below'):
         seaborn
         altair
     """
+    
+    @st.cache
     def get_data(data_url): 
         return (
             pd.read_csv(data_url)
