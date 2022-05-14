@@ -16,25 +16,17 @@ import folium
 #import webbrowser
 
 with st.echo(code_location='below'):
-    """
-    ## Hello, World!
-    """
 
 
-    def print_hello(name="World"):
+    def print_hello(name):
         st.write(f"### Hello, {name}!")
-
-
+        
     name = st.text_input("Your name", key="name", value="Anonymous")
     print_hello(name)
     
     """
-    ## Добавим графики
-    Чтобы заработали библиотеки seaborn и altair, нужно добавить в проект файл 
-    `requirements.txt` с такими строчками:
-    
-        seaborn
-        altair
+    # Приступим
+    Кофе - это всегда хорошая идея и топливо для моего существования, поэтому для анализа использован датасет о странах, где добывается кофе. Для начала просто покажу датасет.
     """
     
     @st.cache
