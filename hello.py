@@ -67,12 +67,17 @@ with st.echo(code_location='below'):
         "Species", ["Arabica", "Robusta"]
     )
     
+     """
+    # Посмотрим, где добывают кофе
+    (здесь можно выбрать сорт зёрен, поменять масштаб или передвинуть карту)
+    """
+    
     df_lands_selection = df_lands[lambda x: x[species] > 0]
     
     
     df_lands_selection
 
-    m = folium.Map(location=[48, -102], zoom_start=3)
+    m = folium.Map(location=[48, -102], zoom_start=1)
     
     folium.Choropleth(
         geo_data=state_geo,
