@@ -136,7 +136,7 @@ with st.echo(code_location='below'):
     ""
     
     country = st.selectbox(
-        "Country", df["Country_of_Origin"].value_counts().iloc[:10].index
+        "Country", df["Country_of_Origin"].value_counts().iloc[:30].index
     )
 
     df_selection = df[lambda x: x["Country_of_Origin"] == country]
@@ -157,7 +157,7 @@ with st.echo(code_location='below'):
 
     
     region = st.selectbox(
-        "Region", df["Region"].value_counts().iloc[:10].index
+        "Region", df["Region"].value_counts().iloc[:30].index
     )
     
     df
@@ -179,7 +179,7 @@ with st.echo(code_location='below'):
     )
 
     species = st.selectbox(
-        "Species_1", df["Species"].value_counts().iloc[:30].index
+        "Species_1", df["Species"].value_counts().iloc[:10].index
     )
 
 
