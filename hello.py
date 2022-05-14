@@ -18,7 +18,7 @@ import folium
 with st.echo(code_location='below'):
 
 
-    def print_hello(name):
+    def print_hello(name):                                                          #копипаст из демо-репозитария
         st.write(f"### Hello, {name}!")
         
     name = st.text_input("Your name", key="name", value="Anonymous")
@@ -39,7 +39,8 @@ with st.echo(code_location='below'):
                     x["Harvest.Year"], format="%Y", errors='coerce'
                     )
             )
-        ).drop("Harvest.Year", 1)
+        ).drop("Harvest.Year", 1)                                                           
+        ).drop("Harvest.Year", 1)                                                           #конец копипаста из демо-репозитария
 
 
     df_ro = get_data("https://github.com/Kitiara2/repo/raw/main/robusta_data_cleaned.csv")
