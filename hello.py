@@ -40,7 +40,7 @@ with st.echo(code_location='below'):
                     )
             )
         ).drop("Harvest.Year", 1)                                                           
-        ).drop("Harvest.Year", 1)                                                           #конец копипаста из демо-репозитария
+                                                        #конец копипаста из демо-репозитария
 
 
     df_ro = get_data("https://github.com/Kitiara2/repo/raw/main/robusta_data_cleaned.csv")
