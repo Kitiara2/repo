@@ -191,7 +191,7 @@ with st.echo(code_location='below'):
     ""
 
     df_selection = df[lambda x: x["Species"] == species]
-    df_selection = df_selection.drop("harvest_year", 1).groupby("Country_of_Origin").sum().reset_index()
+    df_selection = df_selection.drop("harvest_year", 1).groupby("Country_of_Origin").agg({'Clean_Cup':'sum', 'Body' : 'mean'}).reset_index()
     df_selection
 
     base = (
