@@ -59,9 +59,6 @@ with st.echo(code_location='below'):
     for i in range(len(a['features'])):
         arr.append(a['features'][i]['geometry']['type'])
         
-    print(set(arr))
-        
-    print(poly.centroid)
     
     import json
 
@@ -87,6 +84,18 @@ with st.echo(code_location='below'):
         
     df = pd.DataFrame({'id' : ids, 'name' : name, 'lat' : lat, 'lon' : lon})
     df1 = pd.DataFrame({'name' : ['Москва'], 'poly' : moscow_poly})
+    
+    import geopandas as gpd
+
+    gdf = gpd.GeoDataFrame(df, geometry = gpd.points_from_xy(df['lon'], df['lat']))
+    # при создании геодатафрейма нужно явно указывать, какой столбец содержит информацию
+    # о геоданных (geometry)
+    # в случае с gdf мы сказали, что этот столбец нужно создать, используя
+    # координаты точек, хранящиеся в столбцах `lon` и `lat`
+
+    gdf1 = gpd.GeoDataFrame(df1, geometry = 'poly')
+    # в этом случае мы сказали, что нужно просто взять содержимое столбца `poly`
+    # в качестве `geometry`
 
 
     df_ro = get_data("https://github.com/Kitiara2/repo/raw/main/robusta_data_cleaned.csv")
