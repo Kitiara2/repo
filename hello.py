@@ -85,10 +85,8 @@ with st.echo(code_location='below'):
         lat.append(center_i.x)
         lon.append(center_i.y)
         
-        df1 = pd.DataFrame({'name' : ['Москва'], 'poly' : moscow_poly})
-
-
-df = pd.DataFrame({'id' : ids, 'name' : name, 'lat' : lat, 'lon' : lon})
+    df = pd.DataFrame({'id' : ids, 'name' : name, 'lat' : lat, 'lon' : lon})
+    df1 = pd.DataFrame({'name' : ['Москва'], 'poly' : moscow_poly})
 
 
     df_ro = get_data("https://github.com/Kitiara2/repo/raw/main/robusta_data_cleaned.csv")
