@@ -102,7 +102,7 @@ with st.echo(code_location='below'):
     gdf1.head(2)
     gdf1
     
-    moscow_gdf = geopandas.sjoin(gdf, gdf1, predicates='intersects', how='right')
+    moscow_gdf = gdp.sjoin(gdf, gdf1, predicates='intersects', how='right')
     moscow_gdf
     
     
