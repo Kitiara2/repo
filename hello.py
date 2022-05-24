@@ -101,7 +101,7 @@ with st.echo(code_location='below'):
     gdf
     gdf1.head(2)
     
-    moscow_gdf = gpf1.sjoin(gdf, how='inner', predicate='intersects')
+    moscow_gdf = gpf1.sjoin(gdf)
     moscow_gdf
     
     
