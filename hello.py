@@ -97,9 +97,11 @@ with st.echo(code_location='below'):
     # в этом случае мы сказали, что нужно просто взять содержимое столбца `poly`
     # в качестве `geometry`
     
-    g = gdf.head(2)
-    print(g)
+    gdf.head(2)
+    gdf
     gdf1.head(2)
+    
+    
 
 
     df_ro = get_data("https://github.com/Kitiara2/repo/raw/main/robusta_data_cleaned.csv")
