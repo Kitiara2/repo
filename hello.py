@@ -97,7 +97,8 @@ with st.echo(code_location='below'):
     # в этом случае мы сказали, что нужно просто взять содержимое столбца `poly`
     # в качестве `geometry`
     
-    print(gdf.head(2))
+    g = gdf.head(2)
+    print(g)
     gdf1.head(2)
 
 
