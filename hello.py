@@ -41,6 +41,54 @@ with st.echo(code_location='below'):
             )
         ).drop("Harvest.Year", 1)                                                           
                                                         #конец копипаста из демо-репозитария
+    
+    
+    import json
+
+    with open('admin_level_9.geojson', encoding = 'utf-8') as f:
+        a = json.load(f)
+        
+        
+    from shapely.geometry import Polygon
+
+    poly = Polygon(a['features'][0]['geometry']['coordinates'][0][0]) 
+    ## Мы берем первый элемент из списка полигонов
+    poly
+    
+    arr = []
+    for i in range(len(a['features'])):
+        arr.append(a['features'][i]['geometry']['type'])
+        
+    print(set(arr))
+        
+    print(poly.centroid)
+    
+    import json
+
+    with open('Полигон Москвы.geojson', encoding = 'utf-8') as f:
+        b = json.load(f)
+    
+    moscow_poly = Polygon(b['features'][0]['geometry']['coordinates'][0])
+    
+    import pandas as pd
+    ids = []
+    name = []
+    lat = []
+    lon = []
+    for i in range(len(a['features'])):
+        ids.append(a['features'][i]['id'])
+        name.append(a['features'][i]['name'])
+    
+        poly_i = Polygon(a['features'][i]['geometry']['coordinates'][0][0])
+        center_i = poly_i.centroid
+    
+        lat.append(center_i.x)
+        lon.append(center_i.y)
+        
+        df1 = pd.DataFrame({'name' : ['Москва'], 'poly' : moscow_poly})
+
+
+df = pd.DataFrame({'id' : ids, 'name' : name, 'lat' : lat, 'lon' : lon})
 
 
     df_ro = get_data("https://github.com/Kitiara2/repo/raw/main/robusta_data_cleaned.csv")
