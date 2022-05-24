@@ -96,6 +96,9 @@ with st.echo(code_location='below'):
     gdf1 = gpd.GeoDataFrame(df1, geometry = 'poly')
     # в этом случае мы сказали, что нужно просто взять содержимое столбца `poly`
     # в качестве `geometry`
+    
+    gdf.head(2)
+    gdf1.head(2)
 
 
     df_ro = get_data("https://github.com/Kitiara2/repo/raw/main/robusta_data_cleaned.csv")
