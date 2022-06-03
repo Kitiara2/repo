@@ -102,7 +102,7 @@ with st.echo(code_location='below'):
     gdf1
     
     moscow_gdf = gpd.sjoin(gdf, gdf1, predicate='intersects', how='right')
-    moscow_gdf
+
     
     
 
