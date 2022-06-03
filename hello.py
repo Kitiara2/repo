@@ -92,7 +92,7 @@ with st.echo(code_location='below'):
     # в случае с gdf мы сказали, что этот столбец нужно создать, используя
     # координаты точек, хранящиеся в столбцах `lon` и `lat`
 
-    gdf1 = gpd.GeoDataFrame(df1, geometry = df['poly'])
+    gdf1 = gpd.GeoDataFrame(df1, geometry = df1['poly'])
     # в этом случае мы сказали, что нужно просто взять содержимое столбца `poly`
     # в качестве `geometry`
     
