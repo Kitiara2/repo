@@ -78,8 +78,8 @@ with st.echo(code_location='below'):
         poly_i = Polygon(a['features'][i]['geometry']['coordinates'][0][0])
         center_i = poly_i.centroid
     
-        lat.append(center_i.x)
-        lon.append(center_i.y)
+        lon.append(center_i.x)
+        lat.append(center_i.y)
         
     df = pd.DataFrame({'id' : ids, 'name' : name, 'lat' : lat, 'lon' : lon})
     df1 = pd.DataFrame({'name' : ['Москва'], 'poly' : moscow_poly})
@@ -92,7 +92,7 @@ with st.echo(code_location='below'):
     # в случае с gdf мы сказали, что этот столбец нужно создать, используя
     # координаты точек, хранящиеся в столбцах `lon` и `lat`
 
-    gdf1 = gpd.GeoDataFrame(df1, geometry = 'poly')
+    gdf1 = gpd.GeoDataFrame(df1, geometry = df['poly'])
     # в этом случае мы сказали, что нужно просто взять содержимое столбца `poly`
     # в качестве `geometry`
     
