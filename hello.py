@@ -42,8 +42,7 @@ with st.echo(code_location='below'):
         ).drop("Harvest.Year", 1)                                                           
                                                         #конец копипаста из демо-репозитария
     
-    
-    import json
+
 
     with open('admin_level_9.geojson', encoding = 'utf-8') as f:
         a = json.load(f)
