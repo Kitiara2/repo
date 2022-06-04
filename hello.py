@@ -43,9 +43,13 @@ with st.echo(code_location='below'):
                                                         #конец копипаста из демо-репозитария
     
 
-
-    with open('admin_level_9.geojson', encoding = 'utf-8') as f:
-        a = json.load(f)
+        
+    url = (
+        "https://drive.google.com/file/d/1TVhFwjGO3UmiyBNwYyLsDvInrwGm1NkM/view?usp=sharing"
+    )
+    a = f"{url}"
+    #with open('admin_level_9.geojson', encoding = 'utf-8') as f:
+    #    a = json.load(f)
         
         
     from shapely.geometry import Polygon
