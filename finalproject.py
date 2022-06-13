@@ -30,9 +30,6 @@ with st.echo(code_location='below'):
   df_startups_total
   
   m = folium.Map(location=[48, -102], zoom_start=1)
-  folium.LayerControl().add_to(m)
-  st_data = st_folium(m, width = 725)
-  st_data
   
   folium.Choropleth(
     geo_data=state_geo,
@@ -46,6 +43,7 @@ with st.echo(code_location='below'):
     legend_name="Unemployment Rate (%)",
   ).add_to(m)
 
-  folium.LayerControl().add_to(m)
 
-  m
+  folium.LayerControl().add_to(m)
+  st_data = st_folium(m, width = 725)
+  st_data
