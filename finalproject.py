@@ -19,13 +19,30 @@ with st.echo(code_location='below'):
   st.write("hello")
 
 
-  countries =("https://github.com/Kitiara2/repo/raw/main/country.csv")
-  df_c = pd.read_csv(countries)
-  
-  investments =("https://github.com/Kitiara2/repo/blob/main/startup%20data.csv")
-  df = pd.read_csv("https://github.com/Kitiara2/repo/raw/main/startup%20data.csv")
-  
-  df
 
+  url = (
+        "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
+    )
+    state_geo = f"{url}/us-states.json"
+  df_startups = pd.read_csv("https://github.com/Kitiara2/repo/raw/main/startup%20data.csv")
+  
+  df_startups_total = df_startups.groupby("state_code").sum()
+  df_startups_total
+  
   m = folium.Map(location=[48, -102], zoom_start=1)
+  
+  folium.Choropleth(
+    geo_data=state_geo,
+    name="choropleth",
+    data=df_startups_total,
+    columns=["state_code", "funding_total_usd"],
+    key_on="feature.id",
+    fill_color="YlGn",
+    fill_opacity=0.7,
+    line_opacity=0.2,
+    legend_name="Unemployment Rate (%)",
+).add_to(m)
 
+folium.LayerControl().add_to(m)
+
+m
