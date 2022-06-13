@@ -17,16 +17,19 @@ import folium
 with st.echo(code_location='below'):
   st.write("hello")
   
-#with open('admin_level_9.geojson', encoding = 'utf-8') as f:
-#        a = json.load(f)
+
 
 import csv
 
-with open("investments_VC.csv", encoding='utf-8') as f:
-  reader = csv.reader(f)
+#with open("investments_VC.csv", encoding='utf-8') as f:
+#  reader = csv.reader(f)
 
+  @st.cache
+
+  investments =("https://github.com/Kitiara2/repo/raw/main/country.csv")
+  df = pd.read_csv(investments)
   
-st.write(reader)
+  df
 
     
 
