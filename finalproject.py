@@ -27,6 +27,8 @@ with st.echo(code_location='below'):
   """
   # Приступим
   В этом проекте я анализирую различные данные по стартапам - их распространение, концентрацию и сферы. В конце мы даже попробуем предсказать, какую сумму инвестиций вы смогли бы получить на вашу идею.
+  """
+  """
   Как известно, США - родина стартапов, поэтому наиболее точную статистику собирают именно там. С ней и будем работать.
   """
   
@@ -39,8 +41,13 @@ with st.echo(code_location='below'):
   df_startups = pd.read_csv("https://github.com/Kitiara2/repo/raw/main/startup%20data.csv")
   df_startups
   
+  """
+  #Немного контурных карт
+  С помощью библиотеки `folium` нарисуем и покрасим карту США в зависимости от того, сколько инвестиций поднимали стартапы в разных штатах.
+  """
+  
   df_startups_total = df_startups.groupby("state_code").sum().reset_index()
-  df_startups_avarage = df_startups.groupby("state_code").sum().reset_index()
+  df_startups_avarage = df_startups.groupby("state_code").mean().reset_index()
 
   
   value = st.selectbox(
@@ -69,3 +76,7 @@ with st.echo(code_location='below'):
   folium.LayerControl().add_to(m)
   st_data = st_folium(m, width = 725)
   st_data
+  
+  """
+  P.S.: Здесь можно увидеть демократию (шутка). На самом деле, по графикам видно, что среднее распределение не особо отличается от общего. Значит, стартапы из датасета имеют примерно равную капитализацию
+  """
