@@ -99,6 +99,7 @@ with st.echo(code_location='below'):
     df_startups['industry_type'][i] = types[j - 1]
   
   df_startups_industry = df_startups.groupby('industry_type').sum().reset_index()
+  df_startups_industry
   
   """
   Теперь у на есть удобный датасет. Можно сгруппировать даннные по специализации стартапов и визуализировать зависимость поднятых инвестиций от сферы. 
