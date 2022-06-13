@@ -36,13 +36,10 @@ with st.echo(code_location='below'):
   state_geo = f"{url}/us-states.json"
   df_startups = pd.read_csv("https://github.com/Kitiara2/repo/raw/main/startup%20data.csv")
   
-  df_startups_total = df_startups.groupby("state_code").sum()
+  df_startups_total = df_startups.groupby("state_code").sum().reset_index()
   df_startups_total
   
   m = folium.Map(location=[48, -102], zoom_start=1)
-  folium.LayerControl().add_to(m)
-  st_data = st_folium(m, width = 725)
-  st_data
 
   
   folium.Choropleth(
