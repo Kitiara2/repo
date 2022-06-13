@@ -200,6 +200,10 @@ with st.echo(code_location='below'):
   Кто поставит лайк, у того сбудется...
   """
   
+  """
+  Ну и с помощью altair посмотрим, как коррелируют инвестиции с этими признаками
+  """
+  
   chart = (
         alt.Chart(df_startups)
         .mark_circle()
@@ -210,5 +214,44 @@ with st.echo(code_location='below'):
         (
             chart
             + chart.transform_loess("funding_rounds", "funding_total_usd").mark_line()
+        ).interactive()
+    )
+  
+  chart = (
+        alt.Chart(df_startups)
+        .mark_circle()
+        .encode(x="age_first_funding_year", y="funding_total_usd", color = "state_code")
+    )
+  
+  st.altair_chart(
+        (
+            chart
+            + chart.transform_loess("age_first_funding_year", "funding_total_usd").mark_line()
+        ).interactive()
+    )
+  
+  chart = (
+        alt.Chart(df_startups)
+        .mark_circle()
+        .encode(x="avg_participants", y="funding_total_usd", color = "state_code")
+    )
+  
+  st.altair_chart(
+        (
+            chart
+            + chart.transform_loess("avg_participants", "funding_total_usd").mark_line()
+        ).interactive()
+    )
+  
+    chart = (
+        alt.Chart(df_startups)
+        .mark_circle()
+        .encode(x="relationships", y="funding_total_usd", color = "state_code")
+    )
+  
+  st.altair_chart(
+        (
+            chart
+            + chart.transform_loess("relationships", "funding_total_usd").mark_line()
         ).interactive()
     )
