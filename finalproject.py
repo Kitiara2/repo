@@ -27,6 +27,5 @@ with st.echo(code_location='below'):
   
   df
 
-    #with open("investments_VC.csv", encoding='utf-8') as f:
-#  reader = csv.reader(f)
+  m = folium.Map(location=[48, -102], zoom_start=1)
 
