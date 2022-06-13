@@ -94,6 +94,8 @@ with st.echo(code_location='below'):
   
   types = ['software', 'web', 'mobile', 'enterprise', 'advertising', 'gamesvideo', 'ecommerce', 'biotech', 'consulting', 'other category']
   
-  for i in df_startups['industry_type']:
-    i = types[i - 1]
+  for i in range(len(df_startups['industry_type'])):
+    j = df_startups['industry_type'][i] 
+    df_startups['industry_type'][i] = types[j - 1]
+  
   df_startups
