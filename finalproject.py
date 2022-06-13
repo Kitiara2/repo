@@ -19,7 +19,11 @@ with st.echo(code_location='below'):
   
 #with open('admin_level_9.geojson', encoding = 'utf-8') as f:
 #        a = json.load(f)
+
+import csv
+
+with open("investments_VC.csv", encoding='utf-8') as f:
+  a = csv.load(f)
+
     
-    
-df = pd.read_csv("https://github.com/Kitiara2/repo/blob/main/investments_VC.csv")
-df
+
