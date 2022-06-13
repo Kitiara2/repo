@@ -195,3 +195,14 @@ with st.echo(code_location='below'):
   Итак, сумма ваших будущих инвестиций:
   """
   ans
+  
+  st.set_page_config(layout="wide")
+  st.markdown("""
+    <style>
+    .big-font {
+        font-size:300px !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+  st.markdown('<p class="big-font">Hello World !!</p>', unsafe_allow_html=True)
