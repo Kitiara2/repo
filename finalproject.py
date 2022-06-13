@@ -17,7 +17,7 @@ import csv
 
 with st.echo(code_location='below'):
   st.write("hello")
-  @st.cache
+
 
   investments =("https://github.com/Kitiara2/repo/raw/main/country.csv")
   df = pd.read_csv(investments)
