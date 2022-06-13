@@ -200,15 +200,15 @@ with st.echo(code_location='below'):
   Кто поставит лайк, у того сбудется...
   """
   
-  #chart = (
-   #     alt.Chart(df_startups)
-  #      .mark_circle()
-  #      .encode(x=alt.X("funding_rounds"), y="funding_total_usd", color = "Balance:Q")
-  #  )
+  chart = (
+        alt.Chart(df_startups)
+        .mark_circle()
+        .encode(x="funding_rounds", y="funding_total_usd", color = "Balance:Q")
+    )
   
-  #st.altair_chart(
-   #     (
-   #         chart
-   #         + chart.transform_loess("funding_rounds", "funding_total_usd").mark_line()
-   #     ).interactive()
-   # )
+  st.altair_chart(
+        (
+            chart
+            + chart.transform_loess("funding_rounds", "funding_total_usd").mark_line()
+        ).interactive()
+    )
