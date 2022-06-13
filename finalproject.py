@@ -62,7 +62,7 @@ with st.echo(code_location='below'):
   folium.Choropleth(
     geo_data=state_geo,
     name="choropleth",
-    data=df_startups_total,
+    data=startups_data,
     columns=["state_code", "funding_total_usd"],
     key_on="feature.id",
     fill_color="YlGn" if value == 'Total' else "PuOr",
@@ -78,5 +78,5 @@ with st.echo(code_location='below'):
   st_data
   
   """
-  P.S.: Здесь можно увидеть демократию (шутка). На самом деле, по графикам видно, что среднее распределение не особо отличается от общего. Значит, стартапы из датасета имеют примерно равную капитализацию
+  P.S.: Здесь можно увидеть демократию (шутка). На самом деле, по графикам видно, что среднее распределение не особо отличается от общего. Значит, стартапы из датасета имеют примерно равную капитализацию: нет выбросов, когда 
   """
