@@ -26,20 +26,11 @@ with st.echo(code_location='below'):
     
   """
   # Приступим
-  Кофе - это всегда хорошая идея и топливо для моего существования, поэтому для анализа использован датасет о странах, где добывается кофе. Для начала просто покажу датасет.
+  В этом проекте я анализирую различные данные по стартапам - их распространение, концентрацию и сферы. В конце мы даже попробуем предсказать, какую сумму инвестиций вы смогли бы получить на вашу идею.
+  Как известно, США - родина стартапов, поэтому наиболее точную статистику собирают именно там. С ней и будем работать.
   """
   
-  @st.cache
-  
-  def get_data(data_url): 
-     return (
-         pd.read_csv(data_url)
-         .assign(
-             harvest_year=lambda x: pd.to_datetime(
-                 x["Harvest.Year"], format="%Y", errors='coerce'
-                 )
-          )
-      ).drop("Harvest.Year", 1) 
+
   
   url = (
         "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
