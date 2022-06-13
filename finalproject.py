@@ -92,4 +92,8 @@ with st.echo(code_location='below'):
   
   df_startups['industry_type'] = df_startups['is_software']*1 + df_startups['is_web']*2 + df_startups['is_mobile']*3 + df_startups['is_enterprise']*4 + df_startups['is_advertising']*5 + df_startups['is_gamesvideo']*6 + df_startups['is_ecommerce']*7 + df_startups['is_biotech']*8 +df_startups['is_consulting']*8 + df_startups['is_othercategory']*9
   
+  types = ['software', 'web', 'mobile', 'enterprise', 'advertising', 'gamesvideo', 'ecommerce', 'biotech', 'consulting', 'other category']
+  
+  for i in df_startups['industry_type']:
+    i = types[i - 1]
   df_startups
