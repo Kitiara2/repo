@@ -242,8 +242,8 @@ with st.echo(code_location='below'):
             + chart.transform_loess("avg_participants", "funding_total_usd").mark_line()
         ).interactive()
     )
-  
-    chart = (
+ 
+  chart = (
         alt.Chart(df_startups)
         .mark_circle()
         .encode(x="relationships", y="funding_total_usd", color = "state_code")
