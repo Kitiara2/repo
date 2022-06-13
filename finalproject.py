@@ -23,7 +23,9 @@ with st.echo(code_location='below'):
 import csv
 
 with open("investments_VC.csv", encoding='utf-8') as f:
-  a = csv.load(f)
+  reader = csv.reader(File)
+    for row in reader:
+        print(row)
 
     
 
