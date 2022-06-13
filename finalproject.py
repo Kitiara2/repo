@@ -23,7 +23,7 @@ with st.echo(code_location='below'):
   import numpy as np
 
   class Predictor:
-      parameters = ["is_top500",
+    parameters = ["is_top500",
                     "age_first_funding_year",
                     "funding_rounds",
                     "relationships",
