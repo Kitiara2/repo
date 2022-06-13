@@ -98,4 +98,16 @@ with st.echo(code_location='below'):
     j = df_startups['industry_type'][i] 
     df_startups['industry_type'][i] = types[j - 1]
   
-  df_startups
+  df_startups_industry = df_startups.groupby('industry_type').sum().reset_index()
+  
+  """
+  Теперь у на есть удобный датасет. Можно сгруппировать даннные по специализации стартапов и визуализировать зависимость поднятых инвестиций от сферы. 
+  """
+
+  
+  plot = sns.catplot(data=df_startups_industry, x="funding_total_usd", y="industry_type", hue="Специализация",
+                     kind="bar",
+                     palette=sns.color_palette("Set2"), dodge=False)
+  plt.xlabel("Количество инвестиций ($)")
+  plt.ylabel("Сфера")
+  st.pyplot(plot)
