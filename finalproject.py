@@ -23,7 +23,7 @@ with st.echo(code_location='below'):
   url = (
         "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
     )
-    state_geo = f"{url}/us-states.json"
+  state_geo = f"{url}/us-states.json"
   df_startups = pd.read_csv("https://github.com/Kitiara2/repo/raw/main/startup%20data.csv")
   
   df_startups_total = df_startups.groupby("state_code").sum()
@@ -41,8 +41,8 @@ with st.echo(code_location='below'):
     fill_opacity=0.7,
     line_opacity=0.2,
     legend_name="Unemployment Rate (%)",
-).add_to(m)
+  ).add_to(m)
 
-folium.LayerControl().add_to(m)
+  folium.LayerControl().add_to(m)
 
-m
+  m
