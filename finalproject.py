@@ -174,13 +174,13 @@ with st.echo(code_location='below'):
   Определим параметры. Некоторые из них странные, но, кажется, они имеют значение!
   """
   state = st.selectbox(
-        "State", ["Total", "Avarage"]
+        "State", df_startups['state_code']
     )
   industry_type = st.selectbox(
-        "Industry_type", ["Total", "Avarage"]
+        "Industry_type", df_startups['industry_type']
     )
   is_top500 = st.selectbox(
-        "Is_top500", ["Total", "Avarage"]
+        "Is_top500", [1, 0]
     )
   age_first_funding_year = st.text_input("Во сколько вы основали стартап?", key="age_first_funding_year", value="00")
   funding_rounds = st.text_input("Сколько раз стартап поднимал инвестиции?", key="funding_rounds", value="0")
