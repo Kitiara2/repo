@@ -90,6 +90,6 @@ with st.echo(code_location='below'):
   Давайте считать, что это шанс продемонстрировать умение работать с `pandas`
   """
   
-  df_startups['industry_type'] = df_startups['is_software']*1 + df_startups['is_web']*2 + df_startups['is_mobile']*3
+  df_startups['industry_type'] = df_startups['is_software']*1 + df_startups['is_web']*2 + df_startups['is_mobile']*3 + df_startups['is_enterprise']*4 + df_startups['is_advertising']*5 + df_startups['is_gamesvideo']*6 + df_startups['is_ecommerce']*7 + df_startups['is_biotech']*8 +df_startups['is_consulting']*8 + df_startups['is_othercategory']*9
   
   df_startups
