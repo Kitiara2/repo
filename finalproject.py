@@ -13,17 +13,10 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import json
 import folium
+import csv
 
 with st.echo(code_location='below'):
   st.write("hello")
-  
-
-
-import csv
-
-#with open("investments_VC.csv", encoding='utf-8') as f:
-#  reader = csv.reader(f)
-
   @st.cache
 
   investments =("https://github.com/Kitiara2/repo/raw/main/country.csv")
@@ -31,5 +24,6 @@ import csv
   
   df
 
-    
+    #with open("investments_VC.csv", encoding='utf-8') as f:
+#  reader = csv.reader(f)
 
