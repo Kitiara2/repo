@@ -174,7 +174,7 @@ with st.echo(code_location='below'):
   Определим параметры. Некоторые из них странные, но, кажется, они имеют значение!
   """
   state = st.selectbox(
-        "State", df_startups['state_code']
+        "State", set(df_startups['state_code'])
     )
   industry_type = st.selectbox(
         "Industry_type", df_startups['industry_type']
