@@ -21,9 +21,5 @@ with st.echo(code_location='below'):
 #        a = json.load(f)
     
     
-    
-@st.cache
-    
-        
 df = pd.read_csv("https://github.com/Kitiara2/repo/blob/main/investments_VC.csv")
 df
