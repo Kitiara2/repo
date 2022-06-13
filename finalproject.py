@@ -90,6 +90,6 @@ with st.echo(code_location='below'):
   Давайте считать, что это шанс продемонстрировать умение работать с `pandas`
   """
   
-  df_starups['industry_type'] = df_starups['is_software']
+  df_starups['industry_type'] = df_starups.'is_software'*10
   
   df_startups
