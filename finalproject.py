@@ -19,7 +19,10 @@ with st.echo(code_location='below'):
   st.write("hello")
 
 
-  investments =("https://github.com/Kitiara2/repo/raw/main/country.csv")
+  countries =("https://github.com/Kitiara2/repo/raw/main/country.csv")
+  df_c = pd.read_csv(countries)
+  
+  investments =("https://github.com/Kitiara2/repo/raw/main/investments_VC.csv")
   df = pd.read_csv(investments)
   
   df
