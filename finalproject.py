@@ -203,7 +203,7 @@ with st.echo(code_location='below'):
   chart = (
         alt.Chart(df_startups)
         .mark_circle()
-        .encode(x="funding_rounds", y="funding_total_usd", color = "Balance:Q")
+        .encode(x="funding_rounds", y="funding_total_usd", color = "state_code")
     )
   
   st.altair_chart(
