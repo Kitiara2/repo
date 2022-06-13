@@ -21,8 +21,8 @@ with st.echo(code_location='below'):
    def print_hello(name):                                                         
         st.write(f"### Hello, {name}!")
         
-    name = st.text_input("Your name", key="name", value="Anonymous")
-    print_hello(name)
+   name = st.text_input("Your name", key="name", value="Anonymous")
+   print_hello(name)
     
     """
     # Приступим
