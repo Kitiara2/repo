@@ -196,15 +196,19 @@ with st.echo(code_location='below'):
   """
   ans
   
-  chart = (
-        alt.Chart(df_startups)
-        .mark_circle()
-        .encode(x=alt.X("funding_rounds"), y="funding_total_usd", color = "Balance:Q")
-    )
+  """
+  Кто поставит лайк, у того сбудется...
+  """
   
-  st.altair_chart(
-        (
-            chart
-            + chart.transform_loess("funding_rounds", "funding_total_usd").mark_line()
-        ).interactive()
-    )
+  #chart = (
+   #     alt.Chart(df_startups)
+  #      .mark_circle()
+        .encode(x=alt.X("funding_rounds"), y="funding_total_usd", color = "Balance:Q")
+  #  )
+  
+  #st.altair_chart(
+   #     (
+   #         chart
+   #         + chart.transform_loess("funding_rounds", "funding_total_usd").mark_line()
+   #     ).interactive()
+   # )
