@@ -24,8 +24,8 @@ import csv
 
 with open("investments_VC.csv", encoding='utf-8') as f:
   reader = csv.reader(File)
-    for row in reader:
-        print(row)
+  for row in reader:
+      print(row)
 
     
 
