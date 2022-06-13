@@ -18,16 +18,16 @@ import csv
 with st.echo(code_location='below'):
 
   
-   def print_hello(name):                                                         
-        st.write(f"### Hello, {name}!")
+  def print_hello(name):                                                         
+       st.write(f"### Hello, {name}!")
         
-   name = st.text_input("Your name", key="name", value="Anonymous")
-   print_hello(name)
+  name = st.text_input("Your name", key="name", value="Anonymous")
+  print_hello(name)
     
-   """
-   # Приступим
-   Кофе - это всегда хорошая идея и топливо для моего существования, поэтому для анализа использован датасет о странах, где добывается кофе. Для начала просто покажу датасет.
-   """
+  """
+  # Приступим
+  Кофе - это всегда хорошая идея и топливо для моего существования, поэтому для анализа использован датасет о странах, где добывается кофе. Для начала просто покажу датасет.
+  """
   
   @st.cache
   
