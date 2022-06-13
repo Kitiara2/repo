@@ -189,3 +189,9 @@ with st.echo(code_location='below'):
   
  
   ans = predictor.Predict(state, industry_type, is_top500, age_first_funding_year, funding_rounds, relationships, avg_participants)
+  
+  
+  """
+  Итак, сумма ваших будущих инвестиций:
+  """
+  ans
