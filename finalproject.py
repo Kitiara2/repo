@@ -23,16 +23,9 @@ with st.echo(code_location='below'):
   from catboost import CatBoostRegressor
 
   class Predictor:
-    parameters = ["is_top500",
-                    "age_first_funding_year",
-                    "funding_rounds",
-                    "relationships",
-                    "avg_participants"]
+    parameters = ["is_top500", "age_first_funding_year", "funding_rounds", "relationships", "avg_participants"]
     state_types = ['is_CA', 'is_NY', 'is_MA', 'is_TX', 'is_otherstate']
-    industry_types = ['is_software',
-                    'is_web', 'is_mobile', 'is_enterprise', 'is_advertising',
-                    'is_gamesvideo', 'is_ecommerce', 'is_biotech', 'is_consulting',
-                    'is_othercategory']
+    industry_types = ['is_software', 'is_web', 'is_mobile', 'is_enterprise', 'is_advertising', 'is_gamesvideo', 'is_ecommerce', 'is_biotech', 'is_consulting', 'is_othercategory']
     full_parameters = parameters + state_types + industry_types + ["funding_total_usd"]
     def __init__(self):
         self.predictor = CatBoostRegressor()
