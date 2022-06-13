@@ -199,12 +199,12 @@ with st.echo(code_location='below'):
   chart = (
         alt.Chart(df_startups)
         .mark_circle()
-        .encode(x=alt.X("state_code"), y="funding_total_usd", color = "Balance:Q")
+        .encode(x=alt.X("funding_rounds"), y="funding_total_usd", color = "Balance:Q")
     )
   
   st.altair_chart(
         (
             chart
-            + chart.transform_loess("state_code", "funding_total_usd").mark_line()
+            + chart.transform_loess("funding_rounds", "funding_total_usd").mark_line()
         ).interactive()
     )
