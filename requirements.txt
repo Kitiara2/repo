@@ -7,4 +7,4 @@ streamlit-folium
 requests
 rtree
 catboost
-CatBoostRegressor
+
