@@ -67,7 +67,7 @@ with st.echo(code_location='below'):
     data=df_startups_total,
     columns=["state_code", "funding_total_usd"],
     key_on="feature.id",
-    fill_color="YlGn" if species == 'Total' else "PuOr",
+    fill_color="YlGn" if value == 'Total' else "PuOr",
     fill_opacity=0.7,
     nan_fill_opacity = 0,
     line_opacity=0.2,
