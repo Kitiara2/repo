@@ -20,9 +20,19 @@ with st.echo(code_location='below'):
   
   @st.cache
   
-    url = (
-          "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
-    )
+  def get_data(data_url): 
+     return (
+         pd.read_csv(data_url)
+         .assign(
+             harvest_year=lambda x: pd.to_datetime(
+                 x["Harvest.Year"], format="%Y", errors='coerce'
+                 )
+          )
+      ).drop("Harvest.Year", 1) 
+  
+  url = (
+        "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
+  )
   state_geo = f"{url}/us-states.json"
   df_startups = pd.read_csv("https://github.com/Kitiara2/repo/raw/main/startup%20data.csv")
   
