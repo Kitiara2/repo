@@ -18,7 +18,67 @@ import folium
 import csv
 
 with st.echo(code_location='below'):
+  
+  from catboost import CatBoostRegressor
+  import numpy as np
 
+  class Predictor:
+      parameters = ["is_top500",
+                    "age_first_funding_year",
+                    "funding_rounds",
+                    "relationships",
+                    "avg_participants"]
+    state_types = ['is_CA', 'is_NY', 'is_MA', 'is_TX', 'is_otherstate']
+    industry_types = ['is_software',
+                    'is_web', 'is_mobile', 'is_enterprise', 'is_advertising',
+                    'is_gamesvideo', 'is_ecommerce', 'is_biotech', 'is_consulting',
+                    'is_othercategory']
+    full_parameters = parameters + state_types + industry_types + ["funding_total_usd"]
+    def __init__(self):
+        self.predictor = CatBoostRegressor()
+        self.predictor.load_model("regres_model.cbm", format='cbm')
+    def Predict(self,
+                state,
+                industry_type,
+                is_top500,
+                age_first_funding_year,
+                funding_rounds,
+                relationships,
+                avg_participants):
+        x = [is_top500, age_first_funding_year, funding_rounds, relationships, avg_participants]
+
+        state_x = [0 for x in range(len(Predictor.state_types))]
+        has_state = 0
+
+        for i in range(len(Predictor.state_types)):
+            if Predictor.state_types[i][3:] == state:
+                has_state = 1
+                state_x[i] = 1
+                break
+
+        if has_state == 0:
+            state_x[-1] = 1
+        x += state_x
+
+        industry_x = [0 for x in range(len(Predictor.industry_types))]
+        has_type = 0
+        for type in industry_type:
+            for i in range(len(Predictor.industry_types)):
+                if type == Predictor.industry_types[i][3:]:
+                    industry_x[i] = 1
+                    has_type = 1
+                    break
+        if (has_type == 0):
+            industry_x[-1] = 1
+        x += industry_x
+
+        x = np.array(x)
+        # print(f'x = {x}')
+
+        ans = self.predictor.predict(x)
+        return ans
+
+  predictor = Predictor()
   
   def print_hello(name):                                                         
        st.write(f"### Hello, {name}!")
@@ -104,7 +164,7 @@ with st.echo(code_location='below'):
   df_startups_industry
   
   """
-  Теперь у на есть удобный датасет. Можно сгруппировать даннные по специализации стартапов и визуализировать зависимость поднятых инвестиций от сферы. 
+  Теперь у на есть удобный датасет. Можно сгруппировать даннные по специализации стартапов и визуализировать зависимость поднятых инвестиций от сферы. Здесь можно посмотреть на то, в какую сферу больше инвестируют (релевантнее здесь посмотреть как раз общие инвестиции, а не средние - мы смотрим уже на успешную выборку. 
   """
 
   #exercise = sns.load_dataset("exercise")
@@ -112,3 +172,7 @@ with st.echo(code_location='below'):
   plt.xlabel("Количество инвестиций ($)")
   plt.ylabel("Сфера")
   st.pyplot(plot)
+  
+  """
+  Ну а теперь займёмся магией и предскажем
+  """
