@@ -168,7 +168,7 @@ with st.echo(code_location='below'):
   
   """
   # It's time to magic
-  Ну а теперь предскажем, сколько инвнстиций мог бы поднять ваш гипотетический стартап
+  Ну а теперь предскажем, сколько инвнстиций мог бы поднять ваш гипотетический стартап. для этого используем нейросеть, библиотеку `catboost` и `numpy` для рассчётов.
   """
   """
   Определим параметры. Некоторые из них странные, но, кажется, они имеют значение!
@@ -196,13 +196,15 @@ with st.echo(code_location='below'):
   """
   ans
   
-  st.set_page_config(layout="wide")
-  st.markdown("""
-    <style>
-    .big-font {
-        font-size:300px !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-  st.markdown('<p class="big-font">Hello World !!</p>', unsafe_allow_html=True)
+  chart = (
+        alt.Chart(df_startups)
+        .mark_circle()
+        .encode(x=alt.X("state_code"), y="funding_total_usd", color = "Balance:Q")
+    )
+  
+  st.altair_chart(
+        (
+            chart
+            + chart.transform_loess("state_code", "funding_total_usd").mark_line()
+        ).interactive()
+    )
