@@ -16,11 +16,11 @@ from plotly.subplots import make_subplots
 import json
 import folium
 import csv
+import catboost as cb
 
 with st.echo(code_location='below'):
   
   from catboost import CatBoostRegressor
-  import numpy as np
 
   class Predictor:
     parameters = ["is_top500",
