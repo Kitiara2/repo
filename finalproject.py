@@ -20,10 +20,9 @@ with st.echo(code_location='below'):
   
   @st.cache
   
-  
-  url = (
-        "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
-  )
+    url = (
+          "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
+    )
   state_geo = f"{url}/us-states.json"
   df_startups = pd.read_csv("https://github.com/Kitiara2/repo/raw/main/startup%20data.csv")
   
