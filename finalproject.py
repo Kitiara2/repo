@@ -90,6 +90,6 @@ with st.echo(code_location='below'):
   Давайте считать, что это шанс продемонстрировать умение работать с `pandas`
   """
   
-  df_startups['industry_type'] = 'software' if df_startups['is_software'] == 1 else 0
+  df_startups['industry_type'] = df_startups['is_software']*1 + df_startups['is_web']*2 + df_startups['is_mobile']*3
   
   df_startups
