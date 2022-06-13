@@ -167,7 +167,25 @@ with st.echo(code_location='below'):
   st.pyplot(plot)
   
   """
-  Ну а теперь займёмся магией и предскажем
+  # It's time to magic
+  Ну а теперь предскажем, сколько инвнстиций мог бы поднять ваш гипотетический стартап
   """
-
+  """
+  Определим параметры. Некоторые из них странные, но, кажется, они имеют значение!
+  """
+  state = st.selectbox(
+        "State", ["Total", "Avarage"]
+    )
+  industry_type = st.selectbox(
+        "Industry_type", ["Total", "Avarage"]
+    )
+  is_top500 = st.selectbox(
+        "Is_top500", ["Total", "Avarage"]
+    )
+  age_first_funding_year = st.text_input("Во сколько вы основали стартап?", key="age_first_funding_year", value="00")
+  funding_rounds = st.text_input("Сколько раз стартап поднимал инвестиции?", key="funding_rounds", value="0")
+  relationships = st.text_input("Сколько браков у вас было?", key="relationships", value="0")
+  avg_participants = st.text_input("Сколько у вас сотрудников?", key="avg_participants", value="000")
+  
+ 
   ans = predictor.Predict(state, industry_type, is_top500, age_first_funding_year, funding_rounds, relationships, avg_participants)
