@@ -30,6 +30,7 @@ with st.echo(code_location='below'):
   df_startups_total
   
   m = folium.Map(location=[48, -102], zoom_start=1)
+  m
   
   folium.Choropleth(
     geo_data=state_geo,
