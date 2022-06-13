@@ -17,6 +17,8 @@ import csv
 
 with st.echo(code_location='below'):
   st.write("hello")
+  
+  @st.cache
 
 
 
