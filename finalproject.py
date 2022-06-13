@@ -16,7 +16,18 @@ import folium
 import csv
 
 with st.echo(code_location='below'):
-  st.write("hello")
+
+  
+   def print_hello(name):                                                         
+        st.write(f"### Hello, {name}!")
+        
+    name = st.text_input("Your name", key="name", value="Anonymous")
+    print_hello(name)
+    
+    """
+    # Приступим
+    Кофе - это всегда хорошая идея и топливо для моего существования, поэтому для анализа использован датасет о странах, где добывается кофе. Для начала просто покажу датасет.
+    """
   
   @st.cache
   
@@ -35,9 +46,17 @@ with st.echo(code_location='below'):
   )
   state_geo = f"{url}/us-states.json"
   df_startups = pd.read_csv("https://github.com/Kitiara2/repo/raw/main/startup%20data.csv")
+  df_startups
   
   df_startups_total = df_startups.groupby("state_code").sum().reset_index()
-  df_startups_total
+  df_startups_avarage = df_startups.groupby("state_code").sum().reset_index()
+
+  
+  value = st.selectbox(
+        "Value", ["Total", "Avarage"]
+    )
+  
+  startups_data= df_startups_total if value == "Total" else df_startups_avarage
   
   m = folium.Map(location=[48, -102], zoom_start=1)
 
@@ -48,10 +67,11 @@ with st.echo(code_location='below'):
     data=df_startups_total,
     columns=["state_code", "funding_total_usd"],
     key_on="feature.id",
-    fill_color="YlGn",
+    fill_color="YlGn" if species == 'Total' else "PuOr",
     fill_opacity=0.7,
+    nan_fill_opacity = 0,
     line_opacity=0.2,
-    legend_name="Unemployment Rate (%)",
+    legend_name="Total Founding ($)",
   ).add_to(m)
 
 
