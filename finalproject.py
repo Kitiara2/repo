@@ -24,11 +24,6 @@ with st.echo(code_location='below'):
     
 @st.cache
     
-def get_data(data_url): 
-    return (
-        pd.read_csv(data_url)
-    )
-      
-  
-df = get_data("https://github.com/Kitiara2/repo/blob/main/investments_VC.csv")
+        
+df = pd.read_csv("https://github.com/Kitiara2/repo/blob/main/investments_VC.csv")
 df
