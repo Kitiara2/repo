@@ -17,6 +17,18 @@ import folium
 with st.echo(code_location='below'):
   st.write("hello")
   
-
+#with open('admin_level_9.geojson', encoding = 'utf-8') as f:
+#        a = json.load(f)
+    
+    
+    
+@st.cache
+    
+    def get_data(data_url): 
+        return (
+            pd.read_csv(data_url)
+        )
+      
+  
 df = get_data("https://github.com/Kitiara2/repo/blob/main/investments_VC.csv")
 df
