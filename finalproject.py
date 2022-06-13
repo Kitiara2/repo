@@ -23,7 +23,7 @@ with st.echo(code_location='below'):
   df_c = pd.read_csv(countries)
   
   investments =("https://github.com/Kitiara2/repo/blob/main/startup%20data.csv")
-  df = pd.read_csv(investments)
+  df = pd.read_csv("https://github.com/Kitiara2/repo/blob/main/startup%20data.csv")
   
   df
 
