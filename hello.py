@@ -44,70 +44,7 @@ with st.echo(code_location='below'):
     
 
         
-    url = (
-        "https://drive.google.com/file/d/1TVhFwjGO3UmiyBNwYyLsDvInrwGm1NkM/view?usp=sharing"
-    )
-    a = f"{url}"
-    #with open('admin_level_9.geojson', encoding = 'utf-8') as f:
-    #    a = json.load(f)
-        
-        
-    from shapely.geometry import Polygon
-
-    poly = Polygon(a['features'][0]['geometry']['coordinates'][0][0]) 
-    ## Мы берем первый элемент из списка полигонов
-    poly
     
-    arr = []
-    for i in range(len(a['features'])):
-        arr.append(a['features'][i]['geometry']['type'])
-        
-    
-    import json
-
-    with open('Полигон Москвы.geojson', encoding = 'utf-8') as f:
-        b = json.load(f)
-    
-    moscow_poly = Polygon(b['features'][0]['geometry']['coordinates'][0])
-    
-    import pandas as pd
-    ids = []
-    name = []
-    lat = []
-    lon = []
-    for i in range(len(a['features'])):
-        ids.append(a['features'][i]['id'])
-        name.append(a['features'][i]['name'])
-    
-        poly_i = Polygon(a['features'][i]['geometry']['coordinates'][0][0])
-        center_i = poly_i.centroid
-    
-        lon.append(center_i.x)
-        lat.append(center_i.y)
-        
-    df = pd.DataFrame({'id' : ids, 'name' : name, 'lat' : lat, 'lon' : lon})
-    df1 = pd.DataFrame({'name' : ['Москва'], 'poly' : moscow_poly})
-    
-    import geopandas as gpd
-
-    gdf = gpd.GeoDataFrame(df, geometry = gpd.points_from_xy(df['lon'], df['lat']))
-    # при создании геодатафрейма нужно явно указывать, какой столбец содержит информацию
-    # о геоданных (geometry)
-    # в случае с gdf мы сказали, что этот столбец нужно создать, используя
-    # координаты точек, хранящиеся в столбцах `lon` и `lat`
-
-    gdf1 = gpd.GeoDataFrame(df1, geometry = df1['poly'])
-    # в этом случае мы сказали, что нужно просто взять содержимое столбца `poly`
-    # в качестве `geometry`
-    
-    gdf.head(2)
-    gdf
-    gdf1.head(2)
-    gdf1
-    
-    moscow_gdf = gpd.sjoin(gdf, gdf1, predicate='within', how='inner')
-    st.write(moscow_gdf.head())
-
     
     
 
