@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+import plotly.express as px
 import streamlit as st
 from streamlit_folium import st_folium
 import pandas as pd
