@@ -58,7 +58,7 @@ with st.echo(code_location='below'):
   
   startups_data= df_startups_total if value == "Total" else df_startups_avarage
   
-  m = folium.Map(location=[48, -102], zoom_start=1)
+  m = folium.Map(location=[48, -102], zoom_start=3)
 
   
   folium.Choropleth(
