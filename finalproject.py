@@ -176,3 +176,5 @@ with st.echo(code_location='below'):
   """
   Ну а теперь займёмся магией и предскажем
   """
+
+  ans = predictor.Predict(state, industry_type, is_top500, age_first_funding_year, funding_rounds, relationships, avg_participants)
